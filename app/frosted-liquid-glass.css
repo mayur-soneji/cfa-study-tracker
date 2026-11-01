@@ -216,3 +216,44 @@ body {
   content: none !important;
   display: none !important;
 }
+
+
+/* Readiness dial: dedicated, visibly separated ranges for First Pass, Revision and Mocks. */
+.weightedRing {
+  padding: 1px;
+  background: conic-gradient(
+    from -90deg,
+    /* First Pass: 0–50% of total readiness */
+    #edf3f3 0 var(--first-end),
+    rgba(255,255,255,.11) var(--first-end) 49.25%,
+    rgba(7,11,16,.98) 49.25% 50.75%,
+    /* Revision: 50–70% */
+    #c8d3d6 50.75% var(--revision-end),
+    rgba(255,255,255,.11) var(--revision-end) 69.25%,
+    rgba(7,11,16,.98) 69.25% 70.75%,
+    /* Mocks: 70–100% */
+    #aebfc2 70.75% var(--total-end),
+    rgba(255,255,255,.11) var(--total-end) 100%
+  ) !important;
+}
+
+.weightedRing::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from -90deg,
+    transparent 0 49.25%,
+    rgba(255,255,255,.20) 49.25% 49.48%,
+    transparent 49.48% 69.25%,
+    rgba(255,255,255,.20) 69.25% 69.48%,
+    transparent 69.48% 100%
+  ) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.weightedRing > div { z-index: 3; }

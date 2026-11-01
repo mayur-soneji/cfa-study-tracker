@@ -429,3 +429,83 @@
   width: 100% !important;
   text-align: left !important;
 }
+
+
+/* Dashboard controls and study activity */
+.topbarActions {
+  display: flex;
+  min-width: 150px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.examConfigTrigger {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.activitySummary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.activityMetric {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 12px 8px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  background: rgba(255,255,255,.025);
+  text-align: center;
+}
+
+.activityMetric strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.activityMetric small {
+  min-height: 2.4em;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .topbarActions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .examConfigTrigger {
+    align-self: flex-start;
+    width: auto;
+  }
+
+  .activitySummary {
+    grid-template-columns: 1fr;
+  }
+
+  .activityMetric {
+    min-height: 64px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  .activityMetric small {
+    min-height: 0;
+    text-align: right;
+  }
+}

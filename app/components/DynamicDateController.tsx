@@ -13,7 +13,11 @@ export default function DynamicDateController() {
     };
     read();
     window.addEventListener("storage", read);
-    return () => window.removeEventListener("storage", read);
+    window.addEventListener("cfa-exam-config-change", read);
+    return () => {
+      window.removeEventListener("storage", read);
+      window.removeEventListener("cfa-exam-config-change", read);
+    };
   }, []);
 
   useEffect(() => {

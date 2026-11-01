@@ -424,3 +424,29 @@ body {
   .weightedRing > div { min-width: 90px; min-height: 90px; }
   .weightedRing .ringValue { font-size: 29px !important; }
 }
+
+
+/* Continuous readiness path: earned components follow one another with no fixed category gaps. */
+.readinessDialTrack {
+  stroke: rgba(136, 149, 161, .34);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.readinessDialFill {
+  stroke-width: 9;
+  stroke-linecap: round;
+  transition: stroke-dasharray .4s cubic-bezier(.2,.8,.2,1), stroke-dashoffset .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.weightedRing > div {
+  min-width: 104px;
+  min-height: 104px;
+  background:
+    radial-gradient(circle at 31% 18%, rgba(255,255,255,.08), transparent 30%),
+    rgba(12, 17, 24, .82);
+}
+
+.readinessDialSvg {
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.20));
+}

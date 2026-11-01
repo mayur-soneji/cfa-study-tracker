@@ -224,16 +224,16 @@ body {
   background: conic-gradient(
     from -90deg,
     /* First Pass: 0–50% of total readiness */
-    #edf3f3 0 var(--first-end),
-    rgba(255,255,255,.11) var(--first-end) 49.25%,
+    #edf3f3 0 var(--first-fill),
+    rgba(255,255,255,.11) var(--first-fill) 49.25%,
     rgba(7,11,16,.98) 49.25% 50.75%,
     /* Revision: 50–70% */
-    #c8d3d6 50.75% var(--revision-end),
-    rgba(255,255,255,.11) var(--revision-end) 69.25%,
+    #c8d3d6 50.75% var(--revision-fill),
+    rgba(255,255,255,.11) var(--revision-fill) 69.25%,
     rgba(7,11,16,.98) 69.25% 70.75%,
     /* Mocks: 70–100% */
-    #aebfc2 70.75% var(--total-end),
-    rgba(255,255,255,.11) var(--total-end) 100%
+    #aebfc2 70.75% var(--mocks-fill),
+    rgba(255,255,255,.11) var(--mocks-fill) 100%
   ) !important;
 }
 

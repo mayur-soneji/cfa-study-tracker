@@ -1018,3 +1018,132 @@ textarea:focus {
   .revisionTaskRow,
   .studyLogCompletionCta { box-shadow: var(--glass-inset), 0 12px 28px rgba(0,0,0,.24) !important; }
 }
+
+
+/* Glass correction: one readiness dial, one surface per topic row. */
+.readinessWrap {
+  display: grid;
+  place-items: center;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.weightedRing {
+  width: 142px;
+  height: 142px;
+  border: 1px solid rgba(255,255,255,.17);
+  background: conic-gradient(from -90deg, #e7ecec 0 var(--total-end), rgba(255,255,255,.095) var(--total-end) 100%) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+
+.weightedRing::before {
+  inset: 8px !important;
+  background:
+    radial-gradient(circle at 33% 20%, rgba(255,255,255,.15), transparent 31%),
+    linear-gradient(150deg, #272f39, #111720 68%, #0b0f15) !important;
+  box-shadow: inset 0 1px 10px rgba(255,255,255,.07), inset 0 -12px 24px rgba(0,0,0,.29) !important;
+}
+
+.weightedRing .ringValue {
+  font-size: 31px !important;
+  font-weight: 800;
+}
+
+.topic {
+  padding: 18px !important;
+  border-radius: 18px !important;
+}
+
+.topicTop > strong,
+.topicTop > div > strong,
+.topicTop strong,
+.topic strong {
+  color: #eef2f3 !important;
+  font-size: 17px;
+  letter-spacing: -.02em;
+}
+
+.topicTop > div > span,
+.topic .topicTop > div > span,
+.topic .topicTop .status {
+  color: #b1bbc1 !important;
+}
+
+.topic .status {
+  color: #c6cfd3 !important;
+  font-weight: 750;
+}
+
+.topicReadingsList {
+  display: grid;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 0 !important;
+  overflow: auto;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.topicReadingsList li,
+.topicReadingsList li.isComplete,
+.topicReadingsList li.isLockedIncomplete {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.topicReadingCheck {
+  min-height: 64px;
+  padding: 12px 14px !important;
+  border: 1px solid rgba(255,255,255,.115) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(130deg, rgba(255,255,255,.065), rgba(255,255,255,.022) 58%, rgba(0,0,0,.07)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.065), 0 7px 18px rgba(0,0,0,.14) !important;
+}
+
+.topicReadingCheck:hover {
+  border-color: rgba(255,255,255,.22) !important;
+  background: linear-gradient(130deg, rgba(255,255,255,.10), rgba(255,255,255,.035) 58%, rgba(0,0,0,.06)) !important;
+}
+
+.topicReadingsList li.isComplete .topicReadingCheck {
+  border-color: rgba(226,234,234,.22) !important;
+  background: linear-gradient(130deg, rgba(220,230,230,.12), rgba(255,255,255,.027) 60%, rgba(0,0,0,.065)) !important;
+}
+
+.topicReadingNumber {
+  color: #c3ccd0 !important;
+  font-size: 11px !important;
+}
+
+.topicReadingTitle,
+.topicReadingsList li.isComplete .topicReadingTitle {
+  color: #f0f3f4 !important;
+  font-size: 14px !important;
+  font-weight: 720;
+}
+
+.topicReadingStatus {
+  color: #aeb9bf !important;
+  font-size: 11px !important;
+}
+
+.topicReadingsList li.isComplete .topicReadingStatus {
+  color: #dce5e5 !important;
+}
+
+@media (max-width: 640px) {
+  .weightedRing { width: 130px; height: 130px; }
+  .topicReadingCheck { min-height: 58px; padding: 11px 12px !important; }
+}

@@ -36,7 +36,6 @@ function activateTracker(config) {
 const TODAY = () => new Date().toISOString().slice(0, 10);
 const RING_CIRCUMFERENCE = 2 * Math.PI * 46;
 const ringArc = span => `${RING_CIRCUMFERENCE * span / 100} ${RING_CIRCUMFERENCE}`;
-const ringFill = (value, maximum, span) => ringArc(Math.max(0, Math.min(1, Number(value || 0) / maximum)) * span);
 const ringOffset = start => -(RING_CIRCUMFERENCE * start / 100);
 const parseDate = value => new Date(`${String(value)}T12:00:00`);
 const formatDate = value => { const d = parseDate(value); return Number.isNaN(d.getTime()) ? '—' : d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); };
@@ -164,17 +163,15 @@ export default function Home() {
       <section className="hero dashboardHero"><div><span className="pill">READING-LEVEL SPACED REPETITION</span><h2>Build readiness by revisiting what you actually studied.</h2><p>First Pass contributes 50%, reading-level Revision contributes 20%, and the configured mock plan contributes 30%.</p></div><div className="readinessWrap"><div className="weightedRing" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Number(readiness.total.toFixed(2))} aria-label={`${readiness.total.toFixed(2)} percent exam readiness`}>
   <svg className="readinessDialSvg" viewBox="0 0 120 120" aria-hidden="true">
     <defs>
-      <linearGradient id="dial-first" x1="14" y1="14" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop stopColor="#f6f8f8" /><stop offset="1" stopColor="#cbd4d7" /></linearGradient>
-      <linearGradient id="dial-revision" x1="18" y1="105" x2="102" y2="15" gradientUnits="userSpaceOnUse"><stop stopColor="#c5d0d3" /><stop offset="1" stopColor="#919fa6" /></linearGradient>
-      <linearGradient id="dial-mocks" x1="107" y1="105" x2="18" y2="15" gradientUnits="userSpaceOnUse"><stop stopColor="#aebbc0" /><stop offset="1" stopColor="#737f88" /></linearGradient>
+      <linearGradient id="dial-first" x1="14" y1="14" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop stopColor="#f8fbfb" /><stop offset="1" stopColor="#d3dde0" /></linearGradient>
+      <linearGradient id="dial-revision" x1="18" y1="105" x2="102" y2="15" gradientUnits="userSpaceOnUse"><stop stopColor="#c1ccd0" /><stop offset="1" stopColor="#8d9ba3" /></linearGradient>
+      <linearGradient id="dial-mocks" x1="107" y1="105" x2="18" y2="15" gradientUnits="userSpaceOnUse"><stop stopColor="#a6b4ba" /><stop offset="1" stopColor="#707d86" /></linearGradient>
     </defs>
     <g transform="rotate(-90 60 60)">
-      <circle className="readinessDialTrack" cx="60" cy="60" r="46" strokeDasharray={ringArc(48)} strokeDashoffset={ringOffset(1)} />
-      <circle className="readinessDialTrack" cx="60" cy="60" r="46" strokeDasharray={ringArc(18)} strokeDashoffset={ringOffset(51)} />
-      <circle className="readinessDialTrack" cx="60" cy="60" r="46" strokeDasharray={ringArc(28)} strokeDashoffset={ringOffset(71)} />
-      <circle className="readinessDialFill first" cx="60" cy="60" r="46" stroke="url(#dial-first)" strokeDasharray={ringFill(readiness.first, 50, 48)} strokeDashoffset={ringOffset(1)} />
-      <circle className="readinessDialFill revision" cx="60" cy="60" r="46" stroke="url(#dial-revision)" strokeDasharray={ringFill(readiness.revision, 20, 18)} strokeDashoffset={ringOffset(51)} />
-      <circle className="readinessDialFill mocks" cx="60" cy="60" r="46" stroke="url(#dial-mocks)" strokeDasharray={ringFill(readiness.mocks, 30, 28)} strokeDashoffset={ringOffset(71)} />
+      <circle className="readinessDialTrack" cx="60" cy="60" r="46" />
+      <circle className="readinessDialFill first" cx="60" cy="60" r="46" stroke="url(#dial-first)" strokeDasharray={ringArc(readiness.first)} strokeDashoffset={ringOffset(0)} />
+      <circle className="readinessDialFill revision" cx="60" cy="60" r="46" stroke="url(#dial-revision)" strokeDasharray={ringArc(readiness.revision)} strokeDashoffset={ringOffset(readiness.first)} />
+      <circle className="readinessDialFill mocks" cx="60" cy="60" r="46" stroke="url(#dial-mocks)" strokeDasharray={ringArc(readiness.mocks)} strokeDashoffset={ringOffset(readiness.first + readiness.revision)} />
     </g>
   </svg>
   <div><span className="ringValue">{readiness.total.toFixed(2)}%</span><span>readiness</span></div>

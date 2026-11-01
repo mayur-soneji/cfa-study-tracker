@@ -14,8 +14,8 @@ import DynamicDateController from './components/DynamicDateController';
 import MockEmptyStateEnhancer from './components/MockEmptyStateEnhancer';
 
 export const metadata = {
-  title: 'CFA Level I Tracker',
-  description: 'CFA Level I August 2027 study tracker',
+  title: 'CFA Study Tracker',
+  description: 'A configurable CFA exam study tracker',
   icons: { icon: '/icon.png' },
 };
 

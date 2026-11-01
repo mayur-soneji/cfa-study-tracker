@@ -16,13 +16,22 @@ export const LEVEL_STORAGE_KEYS = {
   'l3-privateMarkets': 'cfa-tracker-v11-l3-privateMarkets',
   'l3-privateWealth': 'cfa-tracker-v11-l3-privateWealth',
 };
+export function availableAttemptMonths(attemptYear, now = new Date()) {
+  const year = Number(attemptYear);
+  const currentYear = now.getFullYear();
+  if (year < currentYear) return [];
+  if (year > currentYear) return ATTEMPT_MONTHS;
+  return ATTEMPT_MONTHS.filter(month => month >= now.getMonth() + 1);
+}
+
 export const legacyLevelOneKeys = ['cfa-l1-tracker-v10', 'cfa-l1-tracker-v9', 'cfa-l1-tracker-v8'];
 
 export function normalizeExamConfig(value = {}) {
   const level = ['l1', 'l2', 'l3'].includes(value.level) ? value.level : DEFAULT_EXAM_CONFIG.level;
   const pathway = ['portfolioManagement', 'privateMarkets', 'privateWealth'].includes(value.pathway) ? value.pathway : DEFAULT_EXAM_CONFIG.pathway;
-  const attemptMonth = ATTEMPT_MONTHS.includes(Number(value.attemptMonth)) ? Number(value.attemptMonth) : DEFAULT_EXAM_CONFIG.attemptMonth;
   const attemptYear = Math.min(2029, Math.max(2026, Number(value.attemptYear) || DEFAULT_EXAM_CONFIG.attemptYear));
+  const eligibleMonths = availableAttemptMonths(attemptYear);
+  const attemptMonth = eligibleMonths.includes(Number(value.attemptMonth)) ? Number(value.attemptMonth) : (eligibleMonths[0] || DEFAULT_EXAM_CONFIG.attemptMonth);
   const lastDay = new Date(attemptYear, attemptMonth, 0).getDate();
   const fallback = String(DEFAULT_EXAM_CONFIG.examDate);
   const candidate = typeof value.examDate === 'string' ? value.examDate : fallback;

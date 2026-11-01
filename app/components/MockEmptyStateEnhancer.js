@@ -2,15 +2,15 @@
 
 import {useEffect,useState} from 'react';
 import {createPortal} from 'react-dom';
+import { EXAM_CONFIG_KEY, buildMockDates, normalizeExamConfig, storageKeyForConfig } from '../lib/examConfig';
 
-const STORE='cfa-l1-tracker-v10';
-const LEGACY_STORE='cfa-l1-tracker-v9';
-const MOCK_DATES=['2027-06-16','2027-06-21','2027-06-26','2027-07-01','2027-07-06','2027-07-11','2027-07-16','2027-07-21','2027-07-26','2027-08-01','2027-08-05','2027-08-10'];
-const freshMocks=()=>MOCK_DATES.map((date,i)=>({id:i+1,date,score:'',done:false,completedAt:''}));
+const getConfig=()=>{try{return normalizeExamConfig(JSON.parse(window.localStorage.getItem(EXAM_CONFIG_KEY)||'{}'))}catch{return normalizeExamConfig()}};
+const getStore=()=>storageKeyForConfig(getConfig());
+const freshMocks=()=>{const config=getConfig();return buildMockDates(config.examDate,config.targetMocks).map((date,i)=>({id:i+1,date,score:'',done:false,completedAt:''}));};
 
 function readMocks(){
   try{
-    const raw=window.localStorage.getItem(STORE)||window.localStorage.getItem(LEGACY_STORE);
+    const raw=window.localStorage.getItem(getStore()) || (getConfig().level==='l1' ? window.localStorage.getItem('cfa-l1-tracker-v10') || window.localStorage.getItem('cfa-l1-tracker-v9') : null);
     const state=raw?JSON.parse(raw):{};
     const defaults=freshMocks();
     if(!Array.isArray(state.mocks)) return defaults;
@@ -23,7 +23,7 @@ function readMocks(){
 
 function readState(){
   try{
-    const raw=window.localStorage.getItem(STORE)||window.localStorage.getItem(LEGACY_STORE);
+    const raw=window.localStorage.getItem(getStore()) || (getConfig().level==='l1' ? window.localStorage.getItem('cfa-l1-tracker-v10') || window.localStorage.getItem('cfa-l1-tracker-v9') : null);
     return raw?JSON.parse(raw):{};
   }catch{return {}}
 }
@@ -69,7 +69,7 @@ export default function MockEmptyStateEnhancer(){
     if(!Number.isFinite(n)||n<0||n>100) return;
     const state=readState();
     const mocks=readMocks().map(m=>m.id===mockId?{...m,score:String(n),done:true,completedAt:new Date().toISOString().slice(0,10)}:m);
-    try{window.localStorage.setItem(STORE,JSON.stringify({...state,mocks}));window.location.reload()}catch{}
+    try{window.localStorage.setItem(getStore(),JSON.stringify({...state,mocks}));window.location.reload()}catch{}
   };
 
   if(!target) return null;

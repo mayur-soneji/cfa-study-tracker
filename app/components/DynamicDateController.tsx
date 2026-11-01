@@ -19,13 +19,14 @@ export default function DynamicDateController() {
   useEffect(() => {
     const patch = () => {
       const eyebrow = document.querySelector<HTMLElement>(".eyebrow");
-      if (eyebrow) eyebrow.textContent = formatExamWindow(config);
+      if (eyebrow && eyebrow.textContent !== formatExamWindow(config)) eyebrow.textContent = formatExamWindow(config);
       const count = document.querySelector<HTMLElement>(".count");
       const value = count?.querySelector<HTMLElement>("strong");
       const label = count?.querySelector<HTMLElement>("span");
       const remaining = Math.max(0, getDaysRemaining(config.examDate));
-      if (value) value.textContent = String(remaining);
-      if (label) label.textContent = `${remaining === 1 ? "day" : "days"} to exam`;
+      if (value && value.textContent !== String(remaining)) value.textContent = String(remaining);
+      const nextLabel = `${remaining === 1 ? "day" : "days"} to exam`;
+      if (label && label.textContent !== nextLabel) label.textContent = nextLabel;
     };
     patch();
     const observer = new MutationObserver(patch);

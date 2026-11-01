@@ -1255,3 +1255,49 @@ textarea:focus {
     font-size: 26px !important;
   }
 }
+
+
+/* Correct selectors for the Topics page markup. */
+.topic .topicTop .topicTitle {
+  display: block;
+  color: #f5f7f8 !important;
+  font-size: 24px !important;
+  font-weight: 850 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.045em !important;
+}
+
+.topic .topicTop .topicTitle::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin-top: 9px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #edf1f2, rgba(237,241,242,.14));
+}
+
+.topic .topicTop .topicTitle + span {
+  margin-top: 9px !important;
+  color: #b4bec3 !important;
+  font-size: 11px !important;
+}
+
+.topic .topicReadingsList .topicReadingCheck .topicReadingTitle,
+.topic .topicReadingsList li.isComplete .topicReadingCheck .topicReadingTitle {
+  color: #edf1f2 !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  line-height: 1.3 !important;
+}
+
+.topic .topicReadingsList .topicReadingNumber,
+.topic .topicReadingsList .topicReadingStatus {
+  font-size: 9px !important;
+}
+
+@media (max-width: 640px) {
+  .topic .topicTop .topicTitle { font-size: 21px !important; }
+  .topic .topicReadingsList .topicReadingCheck .topicReadingTitle,
+  .topic .topicReadingsList li.isComplete .topicReadingCheck .topicReadingTitle { font-size: 10px !important; }
+}

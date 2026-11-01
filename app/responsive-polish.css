@@ -1147,3 +1147,57 @@ textarea:focus {
   .weightedRing { width: 130px; height: 130px; }
   .topicReadingCheck { min-height: 58px; padding: 11px 12px !important; }
 }
+
+
+/* Topic hierarchy: subjects lead; readings remain compact supporting content. */
+.topicTop > strong,
+.topicTop > div > strong,
+.topicTop strong,
+.topic strong {
+  color: #f4f6f7 !important;
+  font-size: 23px !important;
+  font-weight: 850 !important;
+  letter-spacing: -.045em !important;
+  line-height: 1.05;
+}
+
+.topicTop > strong::after,
+.topicTop > div > strong::after,
+.topicTop strong::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-top: 9px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #edf1f2, rgba(237,241,242,.16));
+}
+
+.topicReadingTitle,
+.topicReadingsList li.isComplete .topicReadingTitle {
+  font-size: 12px !important;
+  font-weight: 680 !important;
+  line-height: 1.35;
+}
+
+.topicReadingNumber {
+  font-size: 10px !important;
+}
+
+.topicReadingStatus {
+  font-size: 10px !important;
+}
+
+@media (max-width: 640px) {
+  .topicTop > strong,
+  .topicTop > div > strong,
+  .topicTop strong,
+  .topic strong {
+    font-size: 20px !important;
+  }
+
+  .topicReadingTitle,
+  .topicReadingsList li.isComplete .topicReadingTitle {
+    font-size: 11px !important;
+  }
+}

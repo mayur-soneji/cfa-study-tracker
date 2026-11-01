@@ -194,3 +194,25 @@ body {
   .tabStrip button,
   .nav button { transition: none !important; }
 }
+
+
+/* Readiness dial: one uninterrupted progress arc with no phase seams. */
+.weightedRing {
+  border: 0 !important;
+  padding: 1px;
+  background: conic-gradient(
+    from -90deg,
+    #f1f5f5 0 calc(var(--total-end) + .35%),
+    rgba(255,255,255,.105) calc(var(--total-end) + .35%) 100%
+  ) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 1px rgba(255,255,255,.17), inset 0 1px 0 rgba(255,255,255,.40) !important;
+}
+
+.weightedRing::before {
+  inset: 9px !important;
+}
+
+.weightedRing::after {
+  content: none !important;
+  display: none !important;
+}

@@ -1201,3 +1201,57 @@ textarea:focus {
     font-size: 11px !important;
   }
 }
+
+
+/* Revision overview: make the summary figures comfortably scannable. */
+.revisionSummaryCards {
+  gap: 14px !important;
+  margin-top: 18px !important;
+}
+
+.revisionSummaryCards .card {
+  min-height: 124px;
+  padding: 19px 20px !important;
+  border-radius: 17px;
+}
+
+.revisionSummaryCards .card > span:first-child {
+  color: #b8c2c7 !important;
+  font-size: 13px !important;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.revisionSummaryCards .card .kpiValue {
+  margin: 8px 0 5px !important;
+  color: #f3f6f7 !important;
+  font-size: 29px !important;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+
+.revisionSummaryCards .card .kpiSub {
+  color: #c0c9cd !important;
+  font-size: 12px !important;
+  line-height: 1.35;
+}
+
+.revisionReadinessBadge strong {
+  font-size: 25px !important;
+}
+
+.revisionReadinessBadge span {
+  font-size: 11px !important;
+}
+
+@media (max-width: 640px) {
+  .revisionSummaryCards .card {
+    min-height: 108px;
+    padding: 16px !important;
+  }
+
+  .revisionSummaryCards .card .kpiValue {
+    font-size: 26px !important;
+  }
+}

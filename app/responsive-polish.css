@@ -729,3 +729,292 @@ textarea:focus {
   .topbarActions { padding: 6px; }
   .hero { box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 16px 36px rgba(0,0,0,.25); }
 }
+
+
+/* Full-screen glass consolidation — dashboard, topics, study log, mocks, revision, and dialogs. */
+:root {
+  --glass-inset: inset 0 1px 0 rgba(255,255,255,.11), inset 0 -1px 0 rgba(0,0,0,.22);
+  --glass-shadow: 0 18px 46px rgba(0,0,0,.30);
+  --glass-fill: linear-gradient(138deg, rgba(255,255,255,.075), rgba(255,255,255,.024) 50%, rgba(0,0,0,.10));
+  --glass-fill-strong: linear-gradient(138deg, rgba(44,51,61,.82), rgba(18,23,30,.82) 56%, rgba(11,14,20,.88));
+  --glass-track: rgba(255,255,255,.095);
+  --glass-complete: #e2e7e8;
+  --glass-secondary: #aeb9bd;
+}
+
+.topic,
+.readingTopicCard,
+.studyLogPanel,
+.revisionPage,
+.revisionTodayPanel,
+.activityPanel,
+.mock,
+.mock.mockDone,
+.revisionTaskRow,
+.revisionTaskRow.isOverdue,
+.revisionTaskRow.isCompleted,
+.studyLogCompletionCta,
+.logList,
+.logRow,
+.empty,
+.revisionEmpty,
+.upcomingCompact,
+.dialogReadingSummary,
+.readingDialogPreview,
+.readingStatusGroup,
+.configCard,
+.dataTransfer,
+.dataTransferActions,
+.topicReadingsList li,
+.topicReadingCheck {
+  border-color: rgba(255,255,255,.12) !important;
+  background: var(--glass-fill) !important;
+  box-shadow: var(--glass-inset), var(--glass-shadow) !important;
+  backdrop-filter: blur(20px) saturate(105%);
+  -webkit-backdrop-filter: blur(20px) saturate(105%);
+}
+
+.topic,
+.mock,
+.revisionTaskRow,
+.logRow,
+.studyLogCompletionCta,
+.topicReadingsList li,
+.topicReadingCheck {
+  position: relative;
+  overflow: hidden;
+}
+
+.topic::before,
+.mock::before,
+.revisionTaskRow::before,
+.studyLogCompletionCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(118deg, rgba(255,255,255,.075), transparent 28%, transparent 72%, rgba(255,255,255,.025));
+}
+
+.topic::after,
+.mock::after,
+.card::after {
+  opacity: .24 !important;
+  background: radial-gradient(circle, rgba(239,244,245,.12), transparent 68%) !important;
+}
+
+.mock:nth-child(4n+1),
+.mock:nth-child(4n+2),
+.mock:nth-child(4n+3),
+.mock:nth-child(4n),
+.mockDone {
+  border-color: rgba(255,255,255,.12) !important;
+}
+
+.mock.mockDone,
+.revisionTaskRow.isCompleted,
+.topicReadingsList li.isComplete .topicReadingCheck {
+  background: linear-gradient(138deg, rgba(228,234,234,.105), rgba(255,255,255,.028) 52%, rgba(0,0,0,.095)) !important;
+}
+
+.revisionTaskRow.isOverdue {
+  border-color: rgba(217,199,177,.28) !important;
+  background: linear-gradient(100deg, rgba(173,145,111,.105), rgba(255,255,255,.025) 55%, rgba(0,0,0,.09)) !important;
+}
+
+.revisionStatusDot,
+.revisionStatusDot.pending,
+.revisionStatusDot.complete {
+  background: #cdd5d7 !important;
+  box-shadow: 0 0 0 4px rgba(205,213,215,.08) !important;
+}
+
+.revisionStatusDot.overdue {
+  background: #c5aa89 !important;
+  box-shadow: 0 0 0 4px rgba(197,170,137,.09) !important;
+}
+
+.retentionBadge,
+.readingStatusHint.warning,
+.topicReadingsList li.isLockedIncomplete .topicReadingStatus {
+  color: #d2c0a7 !important;
+  border-color: rgba(210,192,167,.22) !important;
+  background: rgba(164,136,101,.10) !important;
+}
+
+.topicModuleTrack,
+.readinessBarTrack,
+.segments .segment,
+.topicReadingCheckBox,
+.check,
+.readingStatusOptions label,
+.attemptMonthOptions label {
+  border-color: rgba(255,255,255,.14) !important;
+  background: rgba(255,255,255,.055) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -1px 0 rgba(0,0,0,.18);
+}
+
+.topicModuleFill,
+.readinessBarTrack > span,
+.readinessBar .bar i,
+.segments .segment.complete {
+  background: linear-gradient(90deg, #aeb9bd, #f1f3f3) !important;
+  box-shadow: 0 0 12px rgba(235,240,240,.13) !important;
+}
+
+.topicReadingCheck input:checked + .topicReadingCheckBox,
+.check.done,
+.readingStatusOptions input:checked + span,
+.attemptMonthOptions input:checked + span {
+  border-color: rgba(255,255,255,.46) !important;
+  background: linear-gradient(135deg, #f4f6f6, #c4ced1) !important;
+  color: #10151a !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 4px 12px rgba(0,0,0,.18) !important;
+}
+
+.topicReadingNumber,
+.topicReadingStatus,
+.mockTop span,
+.mockStatus,
+.revisionTaskEyebrow,
+.revisionTaskMeta small,
+.logRow > span,
+.kpiSub,
+.topicModuleValue {
+  color: #aeb7bd !important;
+}
+
+.topicReadingTitle,
+.revisionTaskMain h3,
+.mockTop strong,
+.studyLogCompletionCta strong,
+.dialogReadingSummary strong,
+.kpiValue,
+.logHoursValue,
+.mockScoreValue,
+.mockScore b {
+  color: #edf1f2 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor;
+}
+
+.logStats .card,
+.logStats .card.tone-blue,
+.logStats .card.tone-cyan,
+.logStats .card.tone-purple,
+.logStats .card.tone-orange {
+  border-color: rgba(255,255,255,.12) !important;
+  background: var(--glass-fill) !important;
+  box-shadow: var(--glass-inset), 0 12px 32px rgba(0,0,0,.22) !important;
+}
+
+.logStats .card::after { opacity: .18 !important; }
+
+.count strong,
+.revisionReadinessBadge strong,
+.readinessBarsHead > span {
+  color: #eff2f3 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none !important;
+}
+
+.count {
+  background: var(--glass-fill) !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+
+.weightedRing {
+  width: 158px;
+  background: conic-gradient(from -90deg, var(--glass-complete) 0 var(--total-end), var(--glass-track) var(--total-end) 100%) !important;
+  box-shadow: 0 20px 46px rgba(0,0,0,.32), 0 0 0 1px rgba(255,255,255,.14), inset 0 1px 0 rgba(255,255,255,.45) !important;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+.weightedRing:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.weightedRing::before {
+  z-index: 0 !important;
+  inset: 9px !important;
+  background:
+    radial-gradient(circle at 31% 20%, rgba(255,255,255,.20), transparent 30%),
+    linear-gradient(145deg, rgba(39,47,57,.96), rgba(13,17,24,.99)) !important;
+  border-color: rgba(255,255,255,.15) !important;
+  box-shadow: inset 0 1px 14px rgba(255,255,255,.09), inset 0 -18px 30px rgba(0,0,0,.35) !important;
+}
+
+.weightedRing::after { display: none !important; }
+
+.weightedRing > div {
+  position: relative;
+  z-index: 1;
+  gap: 4px;
+}
+
+.weightedRing .ringValue {
+  color: #f5f7f7 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor;
+  letter-spacing: -.06em;
+}
+
+.weightedRing .ringValue + span {
+  color: #aab4ba !important;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.readinessBars,
+.readinessBar,
+.readinessBars .readinessBar.first,
+.readinessBars .readinessBar.revision,
+.readinessBars .readinessBar.mocks {
+  border-color: rgba(255,255,255,.12) !important;
+  background: var(--glass-fill) !important;
+  box-shadow: var(--glass-inset), 0 14px 34px rgba(0,0,0,.20) !important;
+}
+
+.readinessBar.first .readinessBarTrack > span,
+.readinessBar.revision .readinessBarTrack > span,
+.readinessBar.mocks .readinessBarTrack > span {
+  background: linear-gradient(90deg, #aeb9bd, #f1f3f3) !important;
+}
+
+.modalBackdrop {
+  background: rgba(4, 7, 11, .70) !important;
+  backdrop-filter: blur(14px) saturate(90%);
+  -webkit-backdrop-filter: blur(14px) saturate(90%);
+}
+
+.modal.glassDialog,
+.glassDialog {
+  background: var(--glass-fill-strong) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  box-shadow: 0 32px 88px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.11) !important;
+}
+
+.modalClose,
+.logRow button,
+.danger {
+  border-color: rgba(255,255,255,.13) !important;
+  background: rgba(255,255,255,.06) !important;
+  color: #e7ecee !important;
+}
+
+.danger:hover {
+  border-color: rgba(213,184,163,.35) !important;
+  background: rgba(178,133,102,.13) !important;
+  color: #f1ded1 !important;
+}
+
+@media (max-width: 640px) {
+  .weightedRing { width: 140px; }
+  .topic,
+  .mock,
+  .revisionTaskRow,
+  .studyLogCompletionCta { box-shadow: var(--glass-inset), 0 12px 28px rgba(0,0,0,.24) !important; }
+}

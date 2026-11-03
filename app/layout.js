@@ -11,9 +11,8 @@ import './revision-redesign.css';
 import './responsive-polish.css';
 import './frosted-liquid-glass.css';
 import './unified-app.css';
+import './apple-redesign.css';
 import DataTransfer from './components/DataTransfer';
-import DynamicDateController from './components/DynamicDateController';
-import MockEmptyStateEnhancer from './components/MockEmptyStateEnhancer';
 
 export const metadata = {
   title: 'CFA Study Tracker',
@@ -32,6 +31,6 @@ export default function RootLayout({ children }) {
         </filter>
       </defs>
     </svg>
-    {children}<MockEmptyStateEnhancer /><DynamicDateController /><DataTransfer />
+    {children}<DataTransfer />
   </body></html>;
 }

@@ -185,22 +185,22 @@ export default function Home() {
               <svg viewBox="0 0 120 86" aria-hidden="true">
                 <defs><mask id="readiness-segments"><rect width="120" height="86" fill="#000" /><path pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" strokeDasharray="6.3 2.05" /></mask></defs>
                 <path className="readinessGaugeTrack" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="6.3 2.05" />
-                <path className="readinessGaugeFill first" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
-                <path className="readinessGaugeFill practice" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset={`-${readiness.first}`} />
-                <path className="readinessGaugeFill mock" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset={`-${readiness.first + readiness.revision}`} />
+                <path className="readinessGaugeFill gauge-coverage" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
+                <path className="readinessGaugeFill gauge-retention" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset={`-${readiness.first}`} />
+                <path className="readinessGaugeFill gauge-mocks" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset={`-${readiness.first + readiness.revision}`} />
               </svg>
               <div className="readinessGaugeValue"><strong>{readiness.total.toFixed(2)}%</strong><span>readiness</span></div>
             </div>
             <div className="readinessGaugeLegend" aria-label="Readiness categories">
-              <span className="first"><i aria-hidden="true" />Coverage <b>50%</b></span>
-              <span className="practice"><i aria-hidden="true" />Retention practice <b>20%</b></span>
-              <span className="mock"><i aria-hidden="true" />Mock confidence <b>30%</b></span>
+              <span className="gauge-coverage"><i aria-hidden="true" />Coverage <b>{readiness.first.toFixed(2)}% / 50%</b></span>
+              <span className="gauge-retention"><i aria-hidden="true" />Retention practice <b>{readiness.revision.toFixed(2)}% / 20%</b></span>
+              <span className="gauge-mocks"><i aria-hidden="true" />Mock confidence <b>{readiness.mocks.toFixed(2)}% / 30%</b></span>
             </div>
           </div>
           <div className="readinessActions">
-            <button type="button" className="readinessAction first" onClick={() => setTab('Topics')}><span className="readinessActionIcon" aria-hidden="true">▱</span><span><strong>First pass</strong><small>{nextReading ? `Next: Reading ${nextReading.number} · ${nextReading.title}` : 'Every reading is complete'}</small></span><span className="readinessActionCta">Continue studying →</span></button>
-            <button type="button" className="readinessAction practice" onClick={() => { setTab('Revision'); setRevisionFilter(overdue.length ? 'Overdue' : 'Due today'); }}><span className="readinessActionIcon" aria-hidden="true">↻</span><span><strong>Retention practice</strong><small>{dueOrOverdueCount ? `${dueOrOverdueCount} review${dueOrOverdueCount === 1 ? '' : 's'} ready to practise` : 'No reviews due today'}</small></span><span className="readinessActionCta">Open revision →</span></button>
-            <button type="button" className="readinessAction mock" onClick={() => setTab('Mocks')}><span className="readinessActionIcon" aria-hidden="true">◉</span><span><strong>Mock confidence</strong><small>{nextMock ? `Next mock: ${formatDate(nextMock.date)}` : 'All planned mocks are complete'}</small></span><span className="readinessActionCta">View mocks →</span></button>
+            <button type="button" className="readinessAction readiness-action-first" onClick={() => setTab('Topics')}><span className="readinessActionIcon" aria-hidden="true">▱</span><span><strong>First pass</strong><small>{nextReading ? `Next: Reading ${nextReading.number} · ${nextReading.title}` : 'Every reading is complete'}</small></span><span className="readinessActionCta">Continue studying →</span></button>
+            <button type="button" className="readinessAction readiness-action-practice" onClick={() => { setTab('Revision'); setRevisionFilter(overdue.length ? 'Overdue' : 'Due today'); }}><span className="readinessActionIcon" aria-hidden="true">↻</span><span><strong>Retention practice</strong><small>{dueOrOverdueCount ? `${dueOrOverdueCount} review${dueOrOverdueCount === 1 ? '' : 's'} ready to practise` : 'No reviews due today'}</small></span><span className="readinessActionCta">Open revision →</span></button>
+            <button type="button" className="readinessAction readiness-action-mock" onClick={() => setTab('Mocks')}><span className="readinessActionIcon" aria-hidden="true">◉</span><span><strong>Mock confidence</strong><small>{nextMock ? `Next mock: ${formatDate(nextMock.date)}` : 'All planned mocks are complete'}</small></span><span className="readinessActionCta">View mocks →</span></button>
           </div>
         </div>
       </section>

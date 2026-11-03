@@ -479,3 +479,38 @@ body {
   .dataTransferMessage,
   .dataTransferError { text-align: left; }
 }
+
+
+/* All three readiness measures share an isolated card layout. */
+.readinessBreakdown {
+  align-items: stretch !important;
+}
+.readinessBreakdown .readinessBar,
+.readinessBreakdown .readinessBar.retention {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  min-width: 0 !important;
+  min-height: 164px !important;
+  margin: 0 !important;
+  padding: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 14px !important;
+  background: color-mix(in srgb, var(--apple-surface-raised) 90%, var(--apple-canvas)) !important;
+  box-shadow: none !important;
+}
+.readinessBreakdown .readinessBarMeta {
+  flex: 0 0 auto;
+  min-height: 21px;
+  margin: 0 !important;
+}
+.readinessBreakdown .readinessBarTrack {
+  flex: 0 0 auto;
+  width: 100% !important;
+  margin: 14px 0 0 !important;
+}
+.readinessBreakdown .readinessBar p {
+  margin-top: auto !important;
+  padding-top: 12px;
+}

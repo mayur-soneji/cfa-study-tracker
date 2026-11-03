@@ -181,15 +181,19 @@ export default function Home() {
         </div>
         <div className="readinessCommandMain">
           <div className="readinessDialCard">
-            <div className="readinessScorePanel" role="group" aria-label={`Exam readiness: ${readiness.total.toFixed(2)} percent`}>
-              <span className="readinessScoreEyebrow">EXAM READINESS</span>
-              <strong>{readiness.total.toFixed(2)}%</strong>
-              <p>Built from three distinct study signals.</p>
-              <div className="readinessSignalList">
-                <span className="first"><i aria-hidden="true" />Coverage <b>{readiness.first.toFixed(2)}% / 50%</b></span>
-                <span className="practice"><i aria-hidden="true" />Retention practice <b>{readiness.revision.toFixed(2)}% / 20%</b></span>
-                <span className="mock"><i aria-hidden="true" />Mock confidence <b>{readiness.mocks.toFixed(2)}% / 30%</b></span>
-              </div>
+            <div className="readinessGauge" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Number(readiness.total.toFixed(2))} aria-label={`${readiness.total.toFixed(2)} percent exam readiness`}>
+              <svg viewBox="0 0 120 86" aria-hidden="true">
+                <path className="readinessGaugeTrack" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" />
+                <path className="readinessGaugeFill first" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
+                <path className="readinessGaugeFill practice" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset="-50" />
+                <path className="readinessGaugeFill mock" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset="-70" />
+              </svg>
+              <div className="readinessGaugeValue"><strong>{readiness.total.toFixed(2)}%</strong><span>readiness</span></div>
+            </div>
+            <div className="readinessGaugeLegend" aria-label="Readiness categories">
+              <span className="first"><i aria-hidden="true" />Coverage</span>
+              <span className="practice"><i aria-hidden="true" />Retention practice</span>
+              <span className="mock"><i aria-hidden="true" />Mock confidence</span>
             </div>
           </div>
           <div className="readinessActions">

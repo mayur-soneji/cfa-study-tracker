@@ -18,9 +18,10 @@ export interface TrackerState { schemaVersion: number; readDone: string[]; revDo
 export interface TrackerExport { schemaVersion: number; app: typeof TRACKER_APP; exportedAt: string; data: TrackerState; }
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
-const today = () => new Date().toISOString().slice(0, 10);
+const dateKey = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+const today = () => dateKey(new Date());
 const parseDate = (value: string) => new Date(`${value}T12:00:00`);
-const addDays = (value: string, amount: number) => { const date = parseDate(value); date.setDate(date.getDate() + amount); return date.toISOString().slice(0, 10); };
+const addDays = (value: string, amount: number) => { const date = parseDate(value); date.setDate(date.getDate() + amount); return dateKey(date); };
 const topicNames: Record<string, string> = { quantitativeMethods: "Quantitative Methods", financialStatementAnalysis: "Financial Statement Analysis", fixedIncome: "Fixed Income", corporateFinance: "Corporate Finance", equities: "Equities", economics: "Economics", portfolioConstruction: "Portfolio Construction", derivativesAndRiskManagement: "Derivatives and Risk Management", alternativeInvestments: "Alternative Investments", ethics: "Ethical and Professional Standards" };
 const aliases: Record<string, string> = { quant: "quantitativeMethods", fsa1: "financialStatementAnalysis", fsa2: "financialStatementAnalysis", fi1: "fixedIncome", fi2: "fixedIncome", ci: "corporateFinance", equity: "equities", econ: "economics", pm: "portfolioConstruction", deriv: "derivativesAndRiskManagement", alts: "alternativeInvestments" };
 const normalizeTopic = (value: unknown) => aliases[String(value)] || String(value || "");

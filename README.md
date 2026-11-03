@@ -8,7 +8,7 @@ A reading-level study tracker for the **CFA Level I August 2027** exam.
 - Reading-linked Study Log sessions
 - Spaced-repetition Revision at Day 1, Day 7, Day 21, then every 21 days indefinitely
 - Revision readiness credit capped at 20%, with only the first three reviews per reading rewarded
-- 12 mocks contributing 30% of overall readiness
+- A configurable number of mocks, together contributing 30% of overall readiness once completed
 - Browser-local persistence with JSON export/import and safe migration from earlier tracker versions
 
 ## Revision model

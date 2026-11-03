@@ -34,13 +34,14 @@ function activateTracker(config) {
   ALL_READINGS = TOPICS.flatMap(([topicId]) => readingList(topicId));
   READING_BY_ID = Object.fromEntries(ALL_READINGS.map(item => [item.id, item]));
 }
-const TODAY = () => new Date().toISOString().slice(0, 10);
+const dateKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+const TODAY = () => dateKey(new Date());
 const RING_CIRCUMFERENCE = 2 * Math.PI * 46;
 const ringArc = span => `${RING_CIRCUMFERENCE * span / 100} ${RING_CIRCUMFERENCE}`;
 const ringOffset = start => -(RING_CIRCUMFERENCE * start / 100);
 const parseDate = value => new Date(`${String(value)}T12:00:00`);
 const formatDate = value => { const d = parseDate(value); return Number.isNaN(d.getTime()) ? '—' : d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); };
-const addDays = (value, amount) => { const d = parseDate(value); d.setDate(d.getDate() + amount); return d.toISOString().slice(0, 10); };
+const addDays = (value, amount) => { const d = parseDate(value); d.setDate(d.getDate() + amount); return dateKey(d); };
 const daysLate = (due, today) => Math.max(0, Math.floor((parseDate(today) - parseDate(due)) / 86400000));
 const readingList = topicId => { const [start] = readingRanges[topicId] || [1]; return (curriculumReadings[topicId] || []).map((title, index) => ({ topicId, number: start + index, title, id: `${topicId}:${start + index}` })); };
 const readingIdFor = (topicId, number) => `${topicId}:${number}`;

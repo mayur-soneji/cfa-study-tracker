@@ -18,7 +18,7 @@ import DataTransfer from './components/DataTransfer';
 export const metadata = {
   title: 'CFA Study Tracker',
   description: 'A configurable CFA exam study tracker',
-  icons: { icon: '/icon.png' },
+  icons: { icon: '/icon.png?v=20261104' },
 };
 
 export default function RootLayout({ children }) {

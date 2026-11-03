@@ -197,7 +197,7 @@ export default function Home() {
         </div>
         <div className="readinessBreakdown">
           <ReadinessBar label="Coverage" value={readiness.first} maximum={50} tone="first" detail={`${topicCompletedReadings}/${TOTAL_READINGS} readings complete`} />
-          <ReadinessBar label="Retention practice" value={readiness.revision} maximum={20} tone="revision" detail={`${todayTasks.length} due today · ${overdue.length} overdue`} />
+          <ReadinessBar label="Retention practice" value={readiness.revision} maximum={20} tone="retention" detail={`${todayTasks.length} due today · ${overdue.length} overdue`} />
           <ReadinessBar label="Mock confidence" value={readiness.mocks} maximum={30} tone="mocks" detail={`${state.mocks.filter(mock => mock.done).length}/${config.targetMocks} scored mocks`} />
         </div>
       </section>

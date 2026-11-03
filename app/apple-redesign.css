@@ -1127,3 +1127,13 @@ body {
   margin-top: 5px !important;
   padding-top: 2px;
 }
+
+
+/* Keep the neutral, empty gauge quiet; the score must never touch the arc. */
+.readinessGaugeValue {
+  inset: 24% 0 auto !important;
+}
+.readinessGaugeValue strong {
+  font-size: clamp(38px, 3.8vw, 46px) !important;
+}
+.readinessGaugeLegend { margin-top: 8px !important; }

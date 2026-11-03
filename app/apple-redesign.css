@@ -1050,3 +1050,60 @@ body {
 @media (max-width: 480px) {
   .studyLogPanel .logStats { grid-template-columns: 1fr !important; }
 }
+
+
+/* Backup controls: one clearly bounded utility group, always aligned to its description. */
+.dataTransfer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: min(calc(100% - 40px), 1124px) !important;
+  min-height: 92px !important;
+  margin: 16px auto 36px !important;
+  padding: 18px 20px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 14px !important;
+  background: var(--apple-surface) !important;
+  box-shadow: none !important;
+}
+.dataTransferInfo {
+  display: grid !important;
+  min-width: 0;
+  gap: 4px !important;
+}
+.dataTransferInfo strong {
+  color: var(--apple-text) !important;
+  font-size: 15px !important;
+  font-weight: 750 !important;
+}
+.dataTransferInfo span {
+  color: var(--apple-secondary) !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+.dataTransferActions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+  gap: 10px !important;
+}
+.dataTransferActions .ghost {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  padding: 0 16px !important;
+  white-space: nowrap !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+@media (max-width: 700px) {
+  .dataTransfer {
+    align-items: stretch !important;
+    flex-direction: column !important;
+    width: calc(100% - 28px) !important;
+  }
+  .dataTransferActions { width: 100% !important; }
+  .dataTransferActions .ghost { flex: 1 1 0 !important; }
+}

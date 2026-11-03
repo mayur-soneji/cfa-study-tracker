@@ -130,7 +130,7 @@ function revisionRewardFor(task) { return task.reviewType === 'Retention review'
 function completionSummary(reading) { return `${reading.title} · ${TOPIC_NAMES[reading.topicId]}`; }
 
 export default function Home() {
-  const [tab, setTab] = useState('Dashboard'), [state, setState] = useState(emptyState()), [ready, setReady] = useState(false), [config, setConfig] = useState(DEFAULT_EXAM_CONFIG), [configReady, setConfigReady] = useState(false), [configOpen, setConfigOpen] = useState(false), [dialog, setDialog] = useState(null), [revisionFilter, setRevisionFilter] = useState('Due today'), [revisionSort, setRevisionSort] = useState('due'), [mockDialog, setMockDialog] = useState(null), [mockScore, setMockScore] = useState('');, [trackerStartedAt, setTrackerStartedAt] = useState('');
+  const [tab, setTab] = useState('Dashboard'), [state, setState] = useState(emptyState()), [ready, setReady] = useState(false), [config, setConfig] = useState(DEFAULT_EXAM_CONFIG), [configReady, setConfigReady] = useState(false), [configOpen, setConfigOpen] = useState(false), [dialog, setDialog] = useState(null), [revisionFilter, setRevisionFilter] = useState('Due today'), [revisionSort, setRevisionSort] = useState('due'), [mockDialog, setMockDialog] = useState(null), [mockScore, setMockScore] = useState(''); const [trackerStartedAt, setTrackerStartedAt] = useState('');
   activateTracker(config);
   const storageKey = storageKeyForConfig(config);
   useEffect(() => { try { const saved = window.localStorage.getItem(EXAM_CONFIG_KEY); const next = normalizeExamConfig(saved ? JSON.parse(saved) : DEFAULT_EXAM_CONFIG); setConfig(next); setConfigOpen(!next.onboardingComplete); } catch { setConfigOpen(true); } finally { setConfigReady(true); } }, []);

@@ -38,7 +38,7 @@ export function normalizeExamConfig(value = {}) {
   const date = new Date(`${candidate}T12:00:00`);
   const sameAttempt = date.getFullYear() === attemptYear && date.getMonth() + 1 === attemptMonth;
   const examDate = sameAttempt && !Number.isNaN(date.getTime()) ? candidate : `${attemptYear}-${String(attemptMonth).padStart(2, '0')}-${String(Math.min(15, lastDay)).padStart(2, '0')}`;
-  return { level, pathway, attemptMonth, attemptYear, examDate, targetMocks: Math.min(20, Math.max(1, Number(value.targetMocks) || 12)), onboardingComplete: Boolean(value.onboardingComplete) };
+  return { level, pathway, attemptMonth, attemptYear, examDate, targetMocks: Math.min(60, Math.max(1, Number(value.targetMocks) || 12)), onboardingComplete: Boolean(value.onboardingComplete) };
 }
 export function storageKeyForConfig(config) {
   const normalized = normalizeExamConfig(config);

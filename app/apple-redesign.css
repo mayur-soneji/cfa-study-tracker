@@ -514,3 +514,82 @@ body {
   margin-top: auto !important;
   padding-top: 12px;
 }
+
+
+/* Action-led readiness summary: each signal carries its own clear colour. */
+.readinessCommandMain {
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr) !important;
+}
+.readinessDialCard {
+  display: block !important;
+  min-height: 0 !important;
+  padding: 0 28px 0 0 !important;
+  border: 0 !important;
+  border-right: 1px solid var(--apple-separator) !important;
+}
+.readinessScorePanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 7px 0;
+}
+.readinessScoreEyebrow {
+  color: var(--apple-secondary);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .08em;
+}
+.readinessScorePanel > strong {
+  margin-top: 8px;
+  color: var(--apple-text);
+  font-size: clamp(42px, 4vw, 58px);
+  font-weight: 780;
+  letter-spacing: -.06em;
+  line-height: .98;
+}
+.readinessScorePanel > p {
+  margin: 8px 0 18px !important;
+  color: var(--apple-secondary) !important;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.readinessSignalList {
+  display: grid;
+  gap: 7px;
+  margin-top: auto;
+}
+.readinessSignalList > span {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  color: var(--apple-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+.readinessSignalList i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.readinessSignalList b {
+  color: var(--apple-secondary);
+  font-size: 11px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.readinessSignalList .first i { background: var(--apple-blue); }
+.readinessSignalList .practice i { background: var(--apple-violet); }
+.readinessSignalList .mock i { background: var(--apple-amber); }
+
+@media (max-width: 700px) {
+  .readinessCommandMain { grid-template-columns: 1fr !important; }
+  .readinessDialCard {
+    padding: 0 0 20px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--apple-separator) !important;
+  }
+  .readinessScorePanel { min-height: 0; }
+}

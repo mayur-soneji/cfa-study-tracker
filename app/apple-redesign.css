@@ -593,3 +593,103 @@ body {
   }
   .readinessScorePanel { min-height: 0; }
 }
+
+
+/* Weighted readiness gauge: the arc is always partitioned 50 / 20 / 30. */
+.readinessDialCard {
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 28px 0 0 !important;
+}
+.readinessGauge {
+  position: relative;
+  width: min(100%, 270px);
+  aspect-ratio: 1.35 / 1;
+}
+.readinessGauge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.readinessGaugeTrack,
+.readinessGaugeCategory,
+.readinessGaugeFill {
+  fill: none;
+  stroke-width: 10;
+}
+.readinessGaugeTrack {
+  stroke: var(--apple-separator);
+  stroke-linecap: round;
+}
+.readinessGaugeCategory {
+  stroke-linecap: butt;
+  opacity: .34;
+}
+.readinessGaugeCategory.first { stroke: var(--apple-blue); }
+.readinessGaugeCategory.practice { stroke: var(--apple-violet); }
+.readinessGaugeCategory.mock { stroke: var(--apple-amber); }
+.readinessGaugeFill {
+  stroke-linecap: round;
+  opacity: 1;
+}
+.readinessGaugeFill.first { stroke: var(--apple-blue); }
+.readinessGaugeFill.practice { stroke: var(--apple-violet); }
+.readinessGaugeFill.mock { stroke: var(--apple-amber); }
+.readinessGaugeValue {
+  position: absolute;
+  inset: 35% 0 auto;
+  display: grid;
+  gap: 3px;
+  place-items: center;
+  text-align: center;
+}
+.readinessGaugeValue strong {
+  color: var(--apple-text);
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 780;
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+.readinessGaugeValue span {
+  color: var(--apple-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.readinessGaugeLegend {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  margin-top: 2px;
+}
+.readinessGaugeLegend > span {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 7px;
+  color: var(--apple-secondary);
+  font-size: 11px;
+  font-weight: 650;
+}
+.readinessGaugeLegend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.readinessGaugeLegend b {
+  color: var(--apple-text);
+  font-size: 11px;
+}
+.readinessGaugeLegend .first i { background: var(--apple-blue); }
+.readinessGaugeLegend .practice i { background: var(--apple-violet); }
+.readinessGaugeLegend .mock i { background: var(--apple-amber); }
+@media (max-width: 700px) {
+  .readinessDialCard {
+    width: 100%;
+    max-width: 330px;
+    padding: 0 0 20px !important;
+  }
+}

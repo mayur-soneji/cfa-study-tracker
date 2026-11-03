@@ -44,17 +44,6 @@ export function storageKeyForConfig(config) {
   const normalized = normalizeExamConfig(config);
   return normalized.level === 'l1' ? LEVEL_STORAGE_KEYS.l1 : normalized.level === 'l2' ? LEVEL_STORAGE_KEYS.l2 : LEVEL_STORAGE_KEYS[`l3-${normalized.pathway}`];
 }
-export function buildMockDates(examDate, targetMocks) {
-  const count = Math.min(20, Math.max(1, Number(targetMocks) || 12));
-  const exam = new Date(`${examDate}T12:00:00`);
-  const windowStart = new Date(exam); windowStart.setDate(windowStart.getDate() - 56);
-  const span = Math.max(1, Math.floor((exam.getTime() - windowStart.getTime()) / 86400000));
-  return Array.from({ length: count }, (_, index) => {
-    const date = new Date(windowStart);
-    date.setDate(date.getDate() + Math.round(((index + 1) * span) / (count + 1)));
-    return date.toISOString().slice(0, 10);
-  });
-}
 export function formatExamWindow(config) {
   const normalized = normalizeExamConfig(config);
   const month = new Date(normalized.attemptYear, normalized.attemptMonth - 1, 1).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' }).toUpperCase();

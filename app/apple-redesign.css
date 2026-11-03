@@ -1137,3 +1137,50 @@ body {
   font-size: clamp(38px, 3.8vw, 46px) !important;
 }
 .readinessGaugeLegend { margin-top: 8px !important; }
+
+/* Readiness gauge refinement: a clean semicircle separates status from its score. */
+.readinessDialCard {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 28px 0 0 !important;
+}
+.readinessGauge {
+  position: static !important;
+  width: min(100%, 300px);
+  aspect-ratio: 1.667 / 1;
+}
+.readinessGaugeTrack,
+.readinessGaugeCategory,
+.readinessGaugeFill {
+  stroke-linecap: butt !important;
+}
+.readinessGaugeValue {
+  position: static !important;
+  inset: auto !important;
+  display: grid;
+  place-items: center;
+  gap: 6px !important;
+  margin-top: 18px;
+  text-align: center;
+}
+.readinessGaugeValue strong {
+  font-size: clamp(30px, 3.1vw, 42px) !important;
+  font-weight: 760;
+  letter-spacing: -.045em;
+  line-height: 1.05 !important;
+}
+.readinessGaugeValue span {
+  font-size: 10px !important;
+  font-weight: 750;
+  letter-spacing: .1em;
+}
+.readinessGaugeLegend {
+  margin-top: 26px !important;
+  padding-top: 0 !important;
+}
+@media (max-width: 700px) {
+  .readinessDialCard { padding: 4px 0 20px !important; }
+  .readinessGauge { width: min(100%, 280px); }
+  .readinessGaugeValue { margin-top: 14px; }
+}

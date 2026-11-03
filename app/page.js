@@ -193,9 +193,6 @@ export default function Home() {
               <svg viewBox="0 0 120 86" aria-hidden="true">
                 <defs><mask id="readiness-segments"><rect width="120" height="86" fill="#000" /><path pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" strokeDasharray="6.3 2.05" /></mask></defs>
                 <path className="readinessGaugeTrack" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="6.3 2.05" />
-                <path className="readinessGaugeCategory first" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="50 50" strokeDashoffset="0" />
-                <path className="readinessGaugeCategory practice" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="20 80" strokeDashoffset="-50" />
-                <path className="readinessGaugeCategory mock" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="30 70" strokeDashoffset="-70" />
                 <path className="readinessGaugeFill gauge-coverage" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
                 <path className="readinessGaugeFill gauge-retention" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset={`-${readiness.first}`} />
                 <path className="readinessGaugeFill gauge-mocks" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset={`-${readiness.first + readiness.revision}`} />

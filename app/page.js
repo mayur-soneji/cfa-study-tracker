@@ -183,13 +183,11 @@ export default function Home() {
           <div className="readinessDialCard">
             <div className="readinessGauge" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Number(readiness.total.toFixed(2))} aria-label={`${readiness.total.toFixed(2)} percent exam readiness`}>
               <svg viewBox="0 0 120 86" aria-hidden="true">
-                <path className="readinessGaugeTrack" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" />
-                <path className="readinessGaugeCategory first" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="50 100" strokeDashoffset="0" />
-                <path className="readinessGaugeCategory practice" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="20 100" strokeDashoffset="-50" />
-                <path className="readinessGaugeCategory mock" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="30 100" strokeDashoffset="-70" />
-                <path className="readinessGaugeFill first" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
-                <path className="readinessGaugeFill practice" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset="-50" />
-                <path className="readinessGaugeFill mock" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset="-70" />
+                <defs><mask id="readiness-segments"><rect width="120" height="86" fill="#000" /><path pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" strokeDasharray="6.3 2.05" /></mask></defs>
+                <path className="readinessGaugeTrack" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray="6.3 2.05" />
+                <path className="readinessGaugeFill first" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.first} 100`} strokeDashoffset="0" />
+                <path className="readinessGaugeFill practice" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.revision} 100`} strokeDashoffset={`-${readiness.first}`} />
+                <path className="readinessGaugeFill mock" mask="url(#readiness-segments)" pathLength="100" d="M 17 72 A 46 46 0 0 1 103 72" strokeDasharray={`${readiness.mocks} 100`} strokeDashoffset={`-${readiness.first + readiness.revision}`} />
               </svg>
               <div className="readinessGaugeValue"><strong>{readiness.total.toFixed(2)}%</strong><span>readiness</span></div>
             </div>

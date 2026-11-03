@@ -2,11 +2,11 @@
 
 import {useEffect,useState} from 'react';
 import {createPortal} from 'react-dom';
-import { EXAM_CONFIG_KEY, buildMockDates, normalizeExamConfig, storageKeyForConfig } from '../lib/examConfig';
+import { EXAM_CONFIG_KEY, normalizeExamConfig, storageKeyForConfig } from '../lib/examConfig';
 
 const getConfig=()=>{try{return normalizeExamConfig(JSON.parse(window.localStorage.getItem(EXAM_CONFIG_KEY)||'{}'))}catch{return normalizeExamConfig()}};
 const getStore=()=>storageKeyForConfig(getConfig());
-const freshMocks=()=>{const config=getConfig();return buildMockDates(config.examDate,config.targetMocks).map((date,i)=>({id:i+1,date,score:'',done:false,completedAt:''}));};
+const freshMocks=()=>{const config=getConfig();return Array.from({length:config.targetMocks},(_,i)=>({id:i+1,score:'',done:false,completedAt:''}));};
 
 function readMocks(){
   try{
@@ -16,7 +16,7 @@ function readMocks(){
     if(!Array.isArray(state.mocks)) return defaults;
     return defaults.map((fallback,i)=>{
       const m=state.mocks[i];
-      return m&&typeof m==='object'?{...fallback,date:typeof m.date==='string'?m.date:fallback.date,score:m.score==null?'':String(m.score),done:!!m.done,completedAt:typeof m.completedAt==='string'?m.completedAt:''}:fallback;
+      return m&&typeof m==='object'?{...fallback,score:m.score==null?'':String(m.score),done:!!m.done,completedAt:typeof m.completedAt==='string'?m.completedAt:''}:fallback;
     });
   }catch{return freshMocks()}
 }
@@ -29,7 +29,7 @@ function readState(){
 }
 
 export default function MockEmptyStateEnhancer(){
-  const [target,setTarget]=useState(null),[open,setOpen]=useState(false),[score,setScore]=useState(''),[mockId,setMockId]=useState(1);
+  const [target,setTarget]=useState(null),[open,setOpen]=useState(false),[score,setScore]=useState(''),[attemptedDate,setAttemptedDate]=useState(new Date().toISOString().slice(0,10)),[mockId,setMockId]=useState(1);
 
   useEffect(()=>{
     const sync=()=>{
@@ -60,6 +60,7 @@ export default function MockEmptyStateEnhancer(){
     const next=readMocks().find(m=>!m.done)?.id||1;
     setMockId(next);
     setScore('');
+    setAttemptedDate(new Date().toISOString().slice(0,10));
     setOpen(true);
   };
 
@@ -68,7 +69,7 @@ export default function MockEmptyStateEnhancer(){
     const n=Number(score);
     if(!Number.isFinite(n)||n<0||n>100) return;
     const state=readState();
-    const mocks=readMocks().map(m=>m.id===mockId?{...m,score:String(n),done:true,completedAt:new Date().toISOString().slice(0,10)}:m);
+    const mocks=readMocks().map(m=>m.id===mockId?{...m,score:String(n),done:true,completedAt:attemptedDate}:m);
     try{window.localStorage.setItem(getStore(),JSON.stringify({...state,mocks}));window.location.reload()}catch{}
   };
 
@@ -78,7 +79,7 @@ export default function MockEmptyStateEnhancer(){
     {createPortal(
       <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',width:'100%',textAlign:'center'}}>
         <strong>No completed mock scores yet</strong>
-        <span style={{maxWidth:'560px',opacity:.72}}>Complete a mock and enter its score to start your dated readiness trend.</span>
+        <span style={{maxWidth:'560px',opacity:.72}}>Complete a mock and enter its score to start your readiness trend.</span>
         <button type="button" className="primary" onClick={openForm}>Add mock score</button>
       </div>,
       target
@@ -89,10 +90,13 @@ export default function MockEmptyStateEnhancer(){
           <button type="button" className="modalClose" aria-label="Close" onClick={()=>setOpen(false)}>×</button>
           <span className="sectionLabel">COMPLETE MOCK {mockId}</span>
           <h2 id="mock-empty-title">Enter mock score</h2>
-          <p id="mock-empty-description">Enter a score from 0 to 100. Today's date will be saved automatically.</p>
+          <p id="mock-empty-description">Enter the score first, then choose when you attempted the mock. Today is selected by default.</p>
           <form onSubmit={submit}>
             <label>Score (%)
               <input autoFocus type="number" min="0" max="100" step="1" required value={score} onChange={e=>setScore(e.target.value)} placeholder="e.g. 72" />
+            </label>
+            <label>Date attempted
+              <input type="date" value={attemptedDate} onChange={e=>setAttemptedDate(e.target.value)} />
             </label>
             <div className="modalActions">
               <button className="ghost" type="button" onClick={()=>setOpen(false)}>Cancel</button>

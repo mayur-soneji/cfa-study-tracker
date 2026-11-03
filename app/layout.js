@@ -10,6 +10,7 @@ import './liquid-glass.css';
 import './revision-redesign.css';
 import './responsive-polish.css';
 import './frosted-liquid-glass.css';
+import './unified-app.css';
 import DataTransfer from './components/DataTransfer';
 import DynamicDateController from './components/DynamicDateController';
 import MockEmptyStateEnhancer from './components/MockEmptyStateEnhancer';

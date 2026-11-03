@@ -1107,3 +1107,23 @@ body {
   .dataTransferActions { width: 100% !important; }
   .dataTransferActions .ghost { flex: 1 1 0 !important; }
 }
+
+
+/* Readiness gauge: visible 50 / 20 / 30 signal structure, with the score in the open centre. */
+.readinessGaugeCategory { opacity: .38 !important; }
+.readinessGaugeCategory.first { stroke: var(--apple-blue) !important; }
+.readinessGaugeCategory.practice { stroke: var(--apple-violet) !important; }
+.readinessGaugeCategory.mock { stroke: var(--apple-amber) !important; }
+.readinessGaugeValue {
+  inset: 52% 0 auto !important;
+  gap: 5px !important;
+}
+.readinessGaugeValue strong {
+  font-size: clamp(36px, 3.5vw, 43px) !important;
+  line-height: .96 !important;
+}
+.readinessGaugeValue span { font-size: 10px !important; }
+.readinessGaugeLegend {
+  margin-top: 5px !important;
+  padding-top: 2px;
+}

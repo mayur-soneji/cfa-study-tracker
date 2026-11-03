@@ -1184,3 +1184,55 @@ body {
   .readinessGauge { width: min(100%, 280px); }
   .readinessGaugeValue { margin-top: 14px; }
 }
+
+/* Shared secondary actions: the reset controls now match the revision control's glass depth. */
+.appShell .glassAction {
+  min-height: 44px !important;
+  padding: 0 16px !important;
+  border: 1px solid color-mix(in srgb, var(--apple-border) 72%, rgba(255, 255, 255, .20)) !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .035)) !important;
+  color: var(--apple-text) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 10px 26px rgba(0, 0, 0, .16) !important;
+  backdrop-filter: blur(16px) saturate(125%);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+}
+.appShell .glassAction:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--apple-blue) 44%, var(--apple-border)) !important;
+  background: linear-gradient(135deg, rgba(111, 144, 255, .18), rgba(88, 224, 207, .08)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .24), 0 13px 30px rgba(40, 86, 180, .22) !important;
+  color: var(--apple-text) !important;
+  transform: translateY(-1px);
+}
+
+/* Backup is deliberately quiet: actions use text-first controls without boxed backgrounds. */
+.dataTransferActions .ghost {
+  min-height: 40px !important;
+  padding: 0 9px !important;
+  border-color: transparent !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--apple-secondary) !important;
+}
+.dataTransferActions .ghost:hover:not(:disabled),
+.dataTransferActions .ghost:focus-visible {
+  border-color: color-mix(in srgb, var(--apple-blue) 26%, transparent) !important;
+  background: color-mix(in srgb, var(--apple-blue) 10%, transparent) !important;
+  color: var(--apple-blue) !important;
+  box-shadow: none !important;
+}
+.dataTransferActions .ghost:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--apple-blue) 68%, transparent);
+  outline-offset: 2px;
+}
+
+/* A completed reading shares the mock completion signal: green tick, soft green fill, and halo. */
+.topicReadingCheck input:checked + .topicReadingCheckBox {
+  border-color: color-mix(in srgb, var(--apple-green) 46%, var(--apple-border)) !important;
+  background: var(--apple-green-soft) !important;
+  box-shadow: 0 0 13px color-mix(in srgb, var(--apple-green) 26%, transparent), inset 0 1px 0 rgba(255, 255, 255, .14) !important;
+}
+.topicReadingCheck input:checked + .topicReadingCheckBox::after {
+  color: var(--apple-green) !important;
+}

@@ -1,0 +1,412 @@
+:root {
+  color-scheme: light dark;
+  --apple-canvas: #f5f5f7;
+  --apple-sidebar: rgba(255, 255, 255, .72);
+  --apple-surface: rgba(255, 255, 255, .92);
+  --apple-surface-raised: #ffffff;
+  --apple-border: rgba(60, 60, 67, .16);
+  --apple-separator: rgba(60, 60, 67, .12);
+  --apple-text: #1d1d1f;
+  --apple-secondary: #6e6e73;
+  --apple-tertiary: #86868b;
+  --apple-blue: #0071e3;
+  --apple-blue-soft: rgba(0, 113, 227, .11);
+  --apple-violet: #7d5cff;
+  --apple-violet-soft: rgba(125, 92, 255, .12);
+  --apple-amber: #b86e00;
+  --apple-amber-soft: rgba(184, 110, 0, .12);
+  --apple-green: #16803c;
+  --apple-green-soft: rgba(22, 128, 60, .12);
+  --app-bg: var(--apple-canvas);
+  --app-panel: var(--apple-surface-raised);
+  --app-panel-2: var(--apple-surface);
+  --app-border: var(--apple-border);
+  --app-text: var(--apple-text);
+  --app-muted: var(--apple-secondary);
+  --first: var(--apple-blue);
+  --practice: var(--apple-violet);
+  --mock: var(--apple-amber);
+  --pace: var(--apple-green);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --apple-canvas: #101114;
+    --apple-sidebar: rgba(29, 30, 34, .86);
+    --apple-surface: rgba(36, 37, 42, .88);
+    --apple-surface-raised: #202126;
+    --apple-border: rgba(235, 235, 245, .16);
+    --apple-separator: rgba(235, 235, 245, .12);
+    --apple-text: #f5f5f7;
+    --apple-secondary: #a1a1a6;
+    --apple-tertiary: #86868b;
+    --apple-blue: #4da3ff;
+    --apple-blue-soft: rgba(77, 163, 255, .16);
+    --apple-violet: #b39cff;
+    --apple-violet-soft: rgba(179, 156, 255, .16);
+    --apple-amber: #f5b94f;
+    --apple-amber-soft: rgba(245, 185, 79, .16);
+    --apple-green: #65d38b;
+    --apple-green-soft: rgba(101, 211, 139, .16);
+  }
+}
+body {
+  min-width: 320px;
+  background: var(--apple-canvas) !important;
+  color: var(--apple-text) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+}
+.appShell {
+  max-width: 1440px !important;
+  min-height: 100vh;
+  margin: 0 auto !important;
+  padding: 24px 32px 56px !important;
+}
+.appShell *,
+.appShell *::before,
+.appShell *::after { box-sizing: border-box; }
+.appShell h1,
+.appShell h2,
+.appShell h3,
+.appShell p { color: inherit; }
+.appShell h1,
+.appShell h2,
+.appShell h3 { text-wrap: balance; }
+.appShell button,
+.appShell input,
+.appShell select { font: inherit; }
+.appShell button {
+  min-height: 44px;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.appShell button:active { transform: scale(.98); }
+.appShell button:focus-visible,
+.appShell input:focus-visible,
+.appShell select:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--apple-blue) 60%, transparent);
+  outline-offset: 2px;
+}
+.topbar {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 28px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.topbar .eyebrow,
+.sectionLabel {
+  color: var(--apple-secondary) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+}
+.topbar h1 {
+  margin: 4px 0 6px !important;
+  color: var(--apple-text) !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.045em !important;
+}
+.topbar p {
+  max-width: 650px;
+  margin: 0 !important;
+  color: var(--apple-secondary) !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+}
+.topbarActions { align-items: center !important; gap: 12px !important; }
+.topbar .count {
+  min-width: 96px;
+  padding: 10px 14px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 14px !important;
+  background: var(--apple-surface) !important;
+  box-shadow: none !important;
+}
+.topbar .count strong { color: var(--apple-text) !important; font-size: 20px !important; line-height: 1 !important; }
+.topbar .count span { color: var(--apple-secondary) !important; font-size: 11px !important; }
+.appShell .primary {
+  border: 1px solid var(--apple-blue) !important;
+  border-radius: 10px !important;
+  background: var(--apple-blue) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.appShell .primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--apple-blue) 88%, #000) !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--apple-blue) 26%, transparent) !important;
+}
+.appShell .ghost {
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--apple-text) !important;
+  box-shadow: none !important;
+}
+.appShell .ghost:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--apple-blue) 42%, var(--apple-border)) !important;
+  background: var(--apple-blue-soft) !important;
+}
+.appShell button:disabled { cursor: not-allowed; opacity: .48; }
+.appShell .nav {
+  display: flex !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 16px !important;
+  background: var(--apple-sidebar) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(18px);
+}
+.appShell .nav::before,
+.appShell .nav::after { display: none !important; }
+.appShell .nav button {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  width: 100%;
+  padding: 9px 10px !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  color: var(--apple-secondary) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+  box-shadow: none !important;
+}
+.appShell .nav button::before {
+  width: 20px !important;
+  margin: 0 !important;
+  color: currentColor !important;
+  font-size: 17px !important;
+  text-align: center;
+}
+.appShell .nav button:hover { background: rgba(128, 128, 128, .1) !important; color: var(--apple-text) !important; }
+.appShell .nav button.active {
+  background: var(--apple-blue-soft) !important;
+  color: var(--apple-blue) !important;
+  font-weight: 700 !important;
+}
+.appShell .nav button.active::after {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px 0 0 3px;
+  background: currentColor;
+  content: "";
+}
+.appShell .nav .nav-revision.active { background: var(--apple-violet-soft) !important; color: var(--apple-violet) !important; }
+.appShell .nav .nav-mocks.active { background: var(--apple-amber-soft) !important; color: var(--apple-amber) !important; }
+.appShell .panel,
+.appShell .card,
+.appShell .topic,
+.appShell .mock,
+.appShell .readinessCommand,
+.dataTransfer {
+  border: 1px solid var(--apple-border) !important;
+  background: var(--apple-surface-raised) !important;
+  box-shadow: none !important;
+}
+.appShell .panel,
+.appShell .readinessCommand {
+  margin-bottom: 20px !important;
+  border-radius: 18px !important;
+}
+.appShell .panel { padding: clamp(20px, 3vw, 30px) !important; }
+.appShell .card,
+.appShell .topic,
+.appShell .mock { border-radius: 14px !important; }
+.appShell .panelHead { gap: 16px !important; padding-bottom: 18px !important; border-bottom: 1px solid var(--apple-separator) !important; }
+.appShell .panelHead h2,
+.appShell .panelHead h3 {
+  margin: 5px 0 5px !important;
+  color: var(--apple-text) !important;
+  font-size: clamp(22px, 2.5vw, 28px) !important;
+  letter-spacing: -.03em !important;
+}
+.appShell .panelHead p,
+.appShell .panel p,
+.appShell .kpiSub,
+.appShell .topicTop > div > span:last-child,
+.appShell .mockDate,
+.appShell .readingStatusHint { color: var(--apple-secondary) !important; }
+.readinessCommand {
+  padding: clamp(20px, 3vw, 30px) !important;
+  background: var(--apple-surface-raised) !important;
+}
+.readinessCommandHead {
+  align-items: flex-start !important;
+  margin-bottom: 24px !important;
+}
+.readinessCommandHead h2 {
+  margin: 5px 0 6px !important;
+  color: var(--apple-text) !important;
+  font-size: clamp(25px, 3vw, 34px) !important;
+  letter-spacing: -.04em !important;
+}
+.readinessCommandHead p { color: var(--apple-secondary) !important; }
+.paceChip {
+  min-height: 34px;
+  padding: 8px 11px !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+.paceChip.ahead {
+  border-color: color-mix(in srgb, var(--apple-green) 42%, transparent) !important;
+  background: var(--apple-green-soft) !important;
+  color: var(--apple-green) !important;
+}
+.paceChip.behind {
+  border-color: color-mix(in srgb, var(--apple-amber) 42%, transparent) !important;
+  background: var(--apple-amber-soft) !important;
+  color: var(--apple-amber) !important;
+}
+.readinessCommandMain { grid-template-columns: minmax(190px, 250px) minmax(0, 1fr) !important; gap: clamp(20px, 3vw, 36px) !important; }
+.readinessDialCard {
+  min-height: 216px !important;
+  border-right: 1px solid var(--apple-separator) !important;
+}
+.readinessCommand .ringValue { color: var(--apple-text) !important; font-size: 41px !important; }
+.readinessCommand .weightedRing > div > span:last-child { color: var(--apple-secondary) !important; }
+.readinessDialTrack { stroke: var(--apple-separator) !important; }
+.readinessDialFill.first { stroke: var(--apple-blue) !important; }
+.readinessDialFill.revision { stroke: var(--apple-violet) !important; }
+.readinessDialFill.mocks { stroke: var(--apple-amber) !important; }
+.readinessActions { gap: 9px !important; }
+.readinessAction {
+  min-height: 68px;
+  padding: 10px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 13px !important;
+  background: transparent !important;
+  color: var(--apple-text) !important;
+}
+.readinessAction:hover {
+  border-color: color-mix(in srgb, var(--apple-blue) 35%, var(--apple-border)) !important;
+  background: color-mix(in srgb, var(--apple-blue) 5%, transparent) !important;
+}
+.readinessActionIcon { width: 44px !important; height: 44px !important; border-radius: 11px !important; }
+.readinessAction strong { font-size: 15px !important; }
+.readinessAction small { color: var(--apple-secondary) !important; }
+.readinessActionCta {
+  min-width: 125px;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  text-align: center;
+}
+.readinessAction.first .readinessActionIcon,
+.readinessAction.first .readinessActionCta { background: var(--apple-blue-soft) !important; color: var(--apple-blue) !important; }
+.readinessAction.practice .readinessActionIcon,
+.readinessAction.practice .readinessActionCta { background: var(--apple-violet-soft) !important; color: var(--apple-violet) !important; }
+.readinessAction.mock .readinessActionIcon,
+.readinessAction.mock .readinessActionCta { background: var(--apple-amber-soft) !important; color: var(--apple-amber) !important; }
+.readinessBreakdown { border-top-color: var(--apple-separator) !important; }
+.readinessBreakdown .readinessBarMeta { color: var(--apple-secondary) !important; }
+.readinessBreakdown .readinessBarMeta strong { color: var(--apple-text) !important; }
+.readinessBreakdown .readinessBarTrack { background: var(--apple-separator) !important; }
+.readinessBreakdown .readinessBar.first .readinessBarTrack span { background: var(--apple-blue) !important; }
+.readinessBreakdown .readinessBar.revision .readinessBarTrack span { background: var(--apple-violet) !important; }
+.readinessBreakdown .readinessBar.mocks .readinessBarTrack span { background: var(--apple-amber) !important; }
+.readinessBreakdown .readinessBar p { color: var(--apple-secondary) !important; }
+.appShell .revisionTaskRow,
+.appShell .studyLogCompletionCta,
+.appShell .upcomingCompact,
+.appShell .logRow,
+.appShell .readingDialogPreview {
+  border-color: var(--apple-separator) !important;
+  background: color-mix(in srgb, var(--apple-surface-raised) 92%, var(--apple-canvas)) !important;
+}
+.appShell .revisionTaskRow:hover,
+.appShell .topic:hover,
+.appShell .mock:hover { border-color: color-mix(in srgb, var(--apple-blue) 32%, var(--apple-border)) !important; }
+.appShell .topicModuleTrack,
+.appShell .progressTrack,
+.appShell .bar { background: var(--apple-separator) !important; }
+.appShell .topicModuleFill,
+.appShell .progressFill { background: var(--apple-blue) !important; }
+.appShell .check.done,
+.appShell .doneText { color: var(--apple-green) !important; }
+.appShell input,
+.appShell select {
+  min-height: 44px;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 9px !important;
+  background: var(--apple-surface-raised) !important;
+  color: var(--apple-text) !important;
+  box-shadow: none !important;
+}
+.appShell .modal,
+.appShell .glassDialog {
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 18px !important;
+  background: var(--apple-surface-raised) !important;
+  color: var(--apple-text) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .22) !important;
+}
+.appShell .modalBackdrop { background: rgba(0, 0, 0, .42) !important; backdrop-filter: blur(5px); }
+@media (min-width: 1024px) {
+  .appShell {
+    display: grid !important;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 32px;
+    align-items: start;
+  }
+  .appShell > :not(.nav) { grid-column: 2; min-width: 0; }
+  .appShell .nav {
+    grid-column: 1;
+    grid-row: 1 / span 40;
+    position: sticky !important;
+    top: 24px !important;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1023px) {
+  .appShell { padding: 20px 20px 44px !important; }
+  .appShell .nav {
+    position: static !important;
+    flex-direction: row;
+    overflow-x: auto;
+    margin-bottom: 24px !important;
+    padding: 7px !important;
+    scrollbar-width: none;
+  }
+  .appShell .nav::-webkit-scrollbar { display: none; }
+  .appShell .nav button { flex: 0 0 auto; width: auto; }
+  .appShell .nav button.active::after { top: auto; right: 10px; bottom: 3px; left: 10px; width: auto; height: 3px; border-radius: 3px 3px 0 0; }
+}
+@media (max-width: 700px) {
+  .topbar { align-items: flex-start !important; flex-direction: column; }
+  .topbarActions { width: 100%; justify-content: space-between; }
+  .readinessCommandHead { flex-direction: column; }
+  .readinessCommandMain { grid-template-columns: 1fr !important; }
+  .readinessDialCard { padding-bottom: 20px; border-right: 0 !important; border-bottom: 1px solid var(--apple-separator); }
+  .readinessBreakdown { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 520px) {
+  .appShell { padding: 16px 14px 36px !important; }
+  .topbarActions { align-items: stretch !important; }
+  .topbar .count { flex: 1; }
+  .readinessAction { grid-template-columns: 42px minmax(0, 1fr) !important; }
+  .readinessActionIcon { width: 42px !important; height: 42px !important; }
+  .readinessActionCta { grid-column: 2; justify-self: start; min-width: 0; }
+  .appShell .panel,
+  .readinessCommand { padding: 18px !important; border-radius: 15px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .appShell *,
+  .appShell *::before,
+  .appShell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

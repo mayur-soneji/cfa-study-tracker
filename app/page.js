@@ -156,7 +156,12 @@ export default function Home() {
   });
   const resetStudy = () => { if (!window.confirm('Reset Study Data? This clears Study Log entries, reading completion/progress history, revision schedules/history/credit, and rest days.')) return; setState(prev => ({ ...emptyState(), mocks: prev.mocks.map(mock => ({ ...mock })) })); };
   const toggleMock = id => { const mock = state.mocks.find(item => item.id === id); if (!mock) return; if (mock.done) { setState(prev => ({ ...prev, mocks: prev.mocks.map(item => item.id === id ? { ...item, done: false, completedAt: '' } : item) })); return; } setMockScore(mock.score || ''); setMockDialog(id); };
-  const completeMock = () => { const score = Number(mockScore); if (mockDialog == null || !Number.isFinite(score) || score < 0 || score > 100) return; setState(prev => ({ ...prev, mocks: prev.mocks.map(item => item.id === mockDialog ? { ...item, sco  const pace = useMemo(() => {
+  const completeMock = () => { const score = Number(mockScore); if (mockDialog == null || !Number.isFinite(score) || score < 0 || score > 100) return; setState(prev => ({ ...prev, mocks: prev.mocks.map(item => item.id === mockDialog ? { ...item, score: String(score), done: true, completedAt: today } : item) })); setMockDialog(null); setMockScore(''); };
+  const dueOrOverdueCount = todayTasks.length + overdue.length;
+  const topicCompletedReadings = ALL_READINGS.filter(reading => state.readingDone?.[reading.topicId]?.includes(reading.number)).length;
+  const nextReading = ALL_READINGS.find(reading => !state.readingDone?.[reading.topicId]?.includes(reading.number));
+  const nextMock = state.mocks.find(mock => !mock.done);
+  const pace = useMemo(() => {
     if (!trackerStartedAt) return null;
     const start = parseDate(trackerStartedAt);
     const elapsedDays = Math.max(0, Math.floor((parseDate(today) - start) / 86400000));

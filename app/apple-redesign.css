@@ -410,3 +410,72 @@ body {
   .appShell *::before,
   .appShell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+
+/* The retention readiness signal intentionally has a unique class so it cannot
+   inherit the Revision workspace's layout rules. */
+.readinessBreakdown .readinessBar.retention {
+  display: block !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.readinessBreakdown .readinessBar.retention .readinessBarTrack span {
+  background: var(--apple-violet) !important;
+}
+
+/* Backup is a secondary utility, not a full-width dashboard panel. */
+.dataTransfer {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px !important;
+  width: min(100% - 40px, 1124px) !important;
+  min-height: 0 !important;
+  margin: 4px auto 32px !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--apple-separator) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.dataTransfer .ghost {
+  min-height: 36px !important;
+  padding: 7px 10px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  color: var(--apple-secondary) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  box-shadow: none !important;
+}
+.dataTransfer .ghost:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--apple-blue) 42%, var(--apple-border)) !important;
+  background: var(--apple-blue-soft) !important;
+  color: var(--apple-blue) !important;
+}
+.dataTransferMessage,
+.dataTransferError {
+  flex-basis: 100%;
+  color: var(--apple-secondary);
+  font-size: 12px;
+  text-align: right;
+}
+.dataTransferError { color: #d82f3d; }
+@media (max-width: 520px) {
+  .dataTransfer {
+    justify-content: flex-start;
+    width: calc(100% - 28px) !important;
+    margin-bottom: 20px !important;
+  }
+  .dataTransferMessage,
+  .dataTransferError { text-align: left; }
+}

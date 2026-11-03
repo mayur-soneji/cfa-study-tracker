@@ -693,3 +693,107 @@ body {
     padding: 0 0 20px !important;
   }
 }
+
+
+/* Dashboard alignment and component-specific action tones. */
+.topbarActions {
+  display: grid !important;
+  grid-template-columns: max-content 112px;
+  align-items: center !important;
+  justify-content: end !important;
+  gap: 10px !important;
+}
+.topbar .examConfigTrigger {
+  min-height: 44px !important;
+  padding: 0 14px !important;
+  white-space: nowrap;
+}
+.topbar .count {
+  display: grid !important;
+  min-height: 44px;
+  height: 44px;
+  align-content: center;
+  justify-items: center;
+  padding: 6px 10px !important;
+}
+.topbar .count strong { line-height: 1 !important; }
+.topbar .count span { white-space: nowrap; }
+
+.readinessAction.readiness-action-first .readinessActionIcon,
+.readinessAction.readiness-action-first .readinessActionCta { background: var(--apple-blue-soft) !important; color: var(--apple-blue) !important; }
+.readinessAction.readiness-action-practice .readinessActionIcon,
+.readinessAction.readiness-action-practice .readinessActionCta { background: var(--apple-violet-soft) !important; color: var(--apple-violet) !important; }
+.readinessAction.readiness-action-mock {
+  display: grid !important;
+  min-width: 0 !important;
+  min-height: 68px !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 13px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.readinessAction.readiness-action-mock .readinessActionIcon,
+.readinessAction.readiness-action-mock .readinessActionCta { background: var(--apple-amber-soft) !important; color: var(--apple-amber) !important; }
+
+/* Segmented gauge: a visible neutral rail and contiguous, exact fills. */
+.readinessGaugeTrack {
+  stroke: color-mix(in srgb, var(--apple-secondary) 34%, transparent) !important;
+  stroke-width: 10 !important;
+}
+.readinessGaugeFill.gauge-coverage { stroke: var(--apple-blue) !important; }
+.readinessGaugeFill.gauge-retention { stroke: var(--apple-violet) !important; }
+.readinessGaugeFill.gauge-mocks { stroke: var(--apple-amber) !important; }
+.readinessGaugeLegend { margin-top: 7px !important; }
+.readinessGaugeLegend > span { min-height: 20px; }
+.readinessGaugeLegend b { color: var(--apple-text) !important; font-variant-numeric: tabular-nums; }
+.readinessGaugeLegend .gauge-coverage i { background: var(--apple-blue); }
+.readinessGaugeLegend .gauge-retention i { background: var(--apple-violet); }
+.readinessGaugeLegend .gauge-mocks i { background: var(--apple-amber); }
+
+/* A full-size, aligned backup panel — intentionally secondary to study actions. */
+.dataTransfer {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 16px 24px !important;
+  width: min(100% - 40px, 1124px) !important;
+  min-height: 92px !important;
+  margin: 12px auto 36px !important;
+  padding: 18px 20px !important;
+  border: 1px solid var(--apple-border) !important;
+  border-radius: 14px !important;
+  background: var(--apple-surface) !important;
+  box-shadow: none !important;
+}
+.dataTransferInfo { display: grid; gap: 3px; }
+.dataTransferInfo strong { color: var(--apple-text); font-size: 14px; }
+.dataTransferInfo span { color: var(--apple-secondary); font-size: 13px; line-height: 1.35; }
+.dataTransferActions { display: flex; align-items: center; gap: 10px; }
+.dataTransfer .ghost {
+  min-height: 44px !important;
+  padding: 0 15px !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+.dataTransferMessage,
+.dataTransferError {
+  grid-column: 1 / -1;
+  margin-top: -5px;
+  text-align: left !important;
+}
+@media (max-width: 700px) {
+  .topbarActions {
+    grid-template-columns: 1fr 112px;
+    width: 100% !important;
+  }
+  .dataTransfer {
+    grid-template-columns: 1fr;
+    width: calc(100% - 28px) !important;
+    gap: 14px !important;
+  }
+  .dataTransferActions { width: 100%; }
+  .dataTransfer .ghost { flex: 1; }
+}

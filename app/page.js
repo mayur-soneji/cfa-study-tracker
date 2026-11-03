@@ -180,25 +180,23 @@ export default function Home() {
           <span className={`paceChip ${pace.delta >= 0 ? 'ahead' : 'behind'}`}>{pace.label}</span>
         </div>
         <div className="readinessCommandMain">
-          <div className="readinessDialCard"><div className="weightedRing" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Number(readiness.total.toFixed(2))} aria-label={`${readiness.total.toFixed(2)} percent exam readiness`}>
-            <svg className="readinessDialSvg" viewBox="0 0 120 120" aria-hidden="true"><g transform="rotate(-90 60 60)">
-              <circle className="readinessDialTrack" cx="60" cy="60" r="46" />
-              <circle className="readinessDialFill first" cx="60" cy="60" r="46" strokeDasharray={ringArc(readiness.first)} strokeDashoffset={ringOffset(0)} />
-              <circle className="readinessDialFill revision" cx="60" cy="60" r="46" strokeDasharray={ringArc(readiness.revision)} strokeDashoffset={ringOffset(readiness.first)} />
-              <circle className="readinessDialFill mocks" cx="60" cy="60" r="46" strokeDasharray={ringArc(readiness.mocks)} strokeDashoffset={ringOffset(readiness.first + readiness.revision)} />
-            </g></svg>
-            <div><span className="ringValue">{readiness.total.toFixed(2)}%</span><span>readiness</span></div>
-          </div></div>
+          <div className="readinessDialCard">
+            <div className="readinessScorePanel" role="group" aria-label={`Exam readiness: ${readiness.total.toFixed(2)} percent`}>
+              <span className="readinessScoreEyebrow">EXAM READINESS</span>
+              <strong>{readiness.total.toFixed(2)}%</strong>
+              <p>Built from three distinct study signals.</p>
+              <div className="readinessSignalList">
+                <span className="first"><i aria-hidden="true" />Coverage <b>{readiness.first.toFixed(2)}% / 50%</b></span>
+                <span className="practice"><i aria-hidden="true" />Retention practice <b>{readiness.revision.toFixed(2)}% / 20%</b></span>
+                <span className="mock"><i aria-hidden="true" />Mock confidence <b>{readiness.mocks.toFixed(2)}% / 30%</b></span>
+              </div>
+            </div>
+          </div>
           <div className="readinessActions">
             <button type="button" className="readinessAction first" onClick={() => setTab('Topics')}><span className="readinessActionIcon" aria-hidden="true">▱</span><span><strong>First pass</strong><small>{nextReading ? `Next: Reading ${nextReading.number} · ${nextReading.title}` : 'Every reading is complete'}</small></span><span className="readinessActionCta">Continue studying →</span></button>
             <button type="button" className="readinessAction practice" onClick={() => { setTab('Revision'); setRevisionFilter(overdue.length ? 'Overdue' : 'Due today'); }}><span className="readinessActionIcon" aria-hidden="true">↻</span><span><strong>Retention practice</strong><small>{dueOrOverdueCount ? `${dueOrOverdueCount} review${dueOrOverdueCount === 1 ? '' : 's'} ready to practise` : 'No reviews due today'}</small></span><span className="readinessActionCta">Open revision →</span></button>
             <button type="button" className="readinessAction mock" onClick={() => setTab('Mocks')}><span className="readinessActionIcon" aria-hidden="true">◉</span><span><strong>Mock confidence</strong><small>{nextMock ? `Next mock: ${formatDate(nextMock.date)}` : 'All planned mocks are complete'}</small></span><span className="readinessActionCta">View mocks →</span></button>
           </div>
-        </div>
-        <div className="readinessBreakdown">
-          <ReadinessBar label="Coverage" value={readiness.first} maximum={50} tone="first" detail={`${topicCompletedReadings}/${TOTAL_READINGS} readings complete`} />
-          <ReadinessBar label="Retention practice" value={readiness.revision} maximum={20} tone="retention" detail={`${todayTasks.length} due today · ${overdue.length} overdue`} />
-          <ReadinessBar label="Mock confidence" value={readiness.mocks} maximum={30} tone="mocks" detail={`${state.mocks.filter(mock => mock.done).length}/${config.targetMocks} scored mocks`} />
         </div>
       </section>
       <section className="panel revisionTodayPanel" aria-labelledby="dashboard-revisions-title"><div className="panelHead"><div><span className="sectionLabel">PRACTICE QUEUE</span><h2 id="dashboard-revisions-title">Today’s reviews</h2><p>{upcoming.length} due in the next 7 days beyond today. Complete late tasks without moving their original due dates.</p></div><button className="primary" type="button" onClick={() => { setTab('Revision'); setRevisionFilter('Due today'); }}>Open Revision</button></div>{todayTasks.length === 0 && overdue.length === 0 ? <div className="revisionEmpty"><div className="emptyIcon" aria-hidden="true">✓</div><h3>No reviews are due today.</h3><p>Keep the queue clean. Your next spaced-practice tasks will appear here automatically.</p></div> : <div className="revisionQueue">{overdue.length > 0 && <div className="queueGroup"><div className="queueGroupHead"><span>OVERDUE</span><strong>{overdue.length}</strong></div>{overdue.map(task => <RevisionRow key={task.taskId} task={task} today={today} onComplete={markRevisionComplete} />)}</div>}{todayTasks.length > 0 && <div className="queueGroup"><div className="queueGroupHead"><span>DUE TODAY</span><strong>{todayTasks.length}</strong></div>{todayTasks.map(task => <RevisionRow key={task.taskId} task={task} today={today} onComplete={markRevisionComplete} />)}</div>}</div>}<div className="upcomingCompact"><span><strong>{upcoming.length}</strong> upcoming in the next 7 days</span><button type="button" className="ghost" onClick={() => { setTab('Revision'); setRevisionFilter('Upcoming'); }}>View upcoming</button></div></section>

@@ -47,5 +47,5 @@ export default function DataTransfer() {
     finally { setBusy(false); event.target.value = ""; }
   };
 
-  return <section className="dataTransfer" aria-label="Data backup and restore"><button type="button" className="ghost" onClick={exportData}>Export backup</button><button type="button" className="ghost" disabled={busy} onClick={() => inputRef.current?.click()}>{busy ? "Importing…" : "Import backup"}</button><input ref={inputRef} type="file" accept="application/json,.json" hidden onChange={importData} />{message && <span className={error ? "dataTransferError" : "dataTransferMessage"} role="status">{message}</span>}</section>;
+  return <section className="dataTransfer" aria-label="Data backup and restore"><div className="dataTransferInfo"><strong>Data backup</strong><span>Export this browser’s tracker data or restore a previous backup.</span></div><div className="dataTransferActions"><button type="button" className="ghost" onClick={exportData}>Export backup</button><button type="button" className="ghost" disabled={busy} onClick={() => inputRef.current?.click()}>{busy ? "Importing…" : "Import backup"}</button><input ref={inputRef} type="file" accept="application/json,.json" hidden onChange={importData} /></div>{message && <span className={error ? "dataTransferError" : "dataTransferMessage"} role="status">{message}</span>}</section>;
 }

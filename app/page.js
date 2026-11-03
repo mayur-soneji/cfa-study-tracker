@@ -194,9 +194,9 @@ export default function Home() {
               <div className="readinessGaugeValue"><strong>{readiness.total.toFixed(2)}%</strong><span>readiness</span></div>
             </div>
             <div className="readinessGaugeLegend" aria-label="Readiness categories">
-              <span className="first"><i aria-hidden="true" />Coverage</span>
-              <span className="practice"><i aria-hidden="true" />Retention practice</span>
-              <span className="mock"><i aria-hidden="true" />Mock confidence</span>
+              <span className="first"><i aria-hidden="true" />Coverage <b>50%</b></span>
+              <span className="practice"><i aria-hidden="true" />Retention practice <b>20%</b></span>
+              <span className="mock"><i aria-hidden="true" />Mock confidence <b>30%</b></span>
             </div>
           </div>
           <div className="readinessActions">

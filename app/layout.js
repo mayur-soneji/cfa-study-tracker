@@ -13,6 +13,7 @@ import './frosted-liquid-glass.css';
 import './unified-app.css';
 import './apple-redesign.css';
 import './mobile-layout.css';
+import './dialog-readiness-polish.css';
 // React owns all tracker UI state; keep auxiliary tools isolated.
 import DataTransfer from './components/DataTransfer';
 
@@ -36,3 +37,4 @@ export default function RootLayout({ children }) {
     {children}<DataTransfer />
   </body></html>;
 }
+

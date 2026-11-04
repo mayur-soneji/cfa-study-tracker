@@ -1,0 +1,157 @@
+/* Final layout authority for the two task dialogs and the dashboard gauge. */
+.readinessDialCard {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 0 !important;
+  padding: 4px 24px 0 0 !important;
+}
+
+.readinessGauge {
+  width: min(100%, 290px) !important;
+  aspect-ratio: 5 / 3 !important;
+}
+
+.readinessGaugeValue {
+  position: static !important;
+  inset: auto !important;
+  margin-top: 0 !important;
+  gap: 2px !important;
+}
+
+.readinessGaugeLegend {
+  margin-top: 14px !important;
+}
+
+.examConfigModal,
+.readingLogModal {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.examConfigModal {
+  width: min(94vw, 540px) !important;
+  padding: 18px !important;
+}
+
+.examConfigModal > h2 {
+  margin: 5px 0 4px !important;
+  font-size: 26px !important;
+  line-height: 1.08 !important;
+}
+
+.examConfigModal > p {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+
+.examConfigModal .readingDialogFields,
+.readingLogModal .readingDialogFields {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  margin: 12px 0 !important;
+}
+
+.examConfigModal .readingStatusGroup,
+.readingLogModal .readingStatusGroup {
+  margin-top: 10px !important;
+  padding: 10px !important;
+}
+
+.examConfigModal .readingStatusOptions button,
+.readingLogModal .readingStatusOptions button,
+.examConfigModal input,
+.examConfigModal select,
+.readingLogModal input,
+.readingLogModal select {
+  min-height: 38px !important;
+}
+
+.examConfigModal form > label {
+  display: grid;
+  gap: 5px;
+  margin-top: 10px !important;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.examConfigModal .readingStatusHint,
+.readingLogModal .readingStatusHint {
+  margin-top: 8px !important;
+  font-size: 10px !important;
+  line-height: 1.35 !important;
+}
+
+.examConfigModal .modalActions,
+.readingLogModal .modalActions {
+  margin-top: 12px !important;
+}
+
+.readingLogModal {
+  width: min(94vw, 560px) !important;
+  padding: 18px !important;
+}
+
+.readingLogModal .readingDialogHead h2 {
+  font-size: 22px !important;
+  line-height: 1.08 !important;
+}
+
+.readingLogModal .readingDialogHead p {
+  line-height: 1.35 !important;
+}
+
+.readingLogModal .readingDialogPreview {
+  margin-top: 10px !important;
+  padding: 8px 10px !important;
+}
+
+.readingLogModal .readingDialogPreview small {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .modalBackdrop {
+    align-items: center !important;
+    overflow: hidden !important;
+    padding: 10px !important;
+  }
+
+  .examConfigModal,
+  .readingLogModal {
+    width: min(96vw, 540px) !important;
+    padding: 14px !important;
+    border-radius: 15px !important;
+  }
+
+  .examConfigModal > h2 {
+    font-size: 24px !important;
+  }
+
+  .examConfigModal .readingDialogFields,
+  .readingLogModal .readingDialogFields {
+    gap: 7px !important;
+    margin: 10px 0 !important;
+  }
+
+  .examConfigModal .readingStatusGroup,
+  .readingLogModal .readingStatusGroup {
+    margin-top: 8px !important;
+    padding: 8px !important;
+  }
+
+  .examConfigModal .readingStatusOptions button,
+  .readingLogModal .readingStatusOptions button,
+  .examConfigModal input,
+  .examConfigModal select,
+  .readingLogModal input,
+  .readingLogModal select {
+    min-height: 36px !important;
+    padding: 0 8px !important;
+  }
+
+  .readinessDialCard { padding: 0 0 12px !important; }
+  .readinessGauge { width: min(100%, 238px) !important; }
+  .readinessGaugeLegend { margin-top: 10px !important; }
+}
+

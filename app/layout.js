@@ -12,6 +12,7 @@ import './responsive-polish.css';
 import './frosted-liquid-glass.css';
 import './unified-app.css';
 import './apple-redesign.css';
+import './mobile-layout.css';
 // React owns all tracker UI state; keep auxiliary tools isolated.
 import DataTransfer from './components/DataTransfer';
 

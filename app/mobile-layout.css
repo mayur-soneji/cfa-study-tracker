@@ -1,0 +1,207 @@
+/*
+ * Compact phone layout. This file intentionally loads last: the tracker has
+ * several presentation layers, and small-screen sizing needs one reliable
+ * source of truth rather than competing overrides.
+ */
+@media (max-width: 700px) {
+  .appShell {
+    width: 100%;
+    padding: 16px 14px 32px !important;
+  }
+
+  .topbar {
+    gap: 12px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .topbar h1 {
+    margin: 4px 0 !important;
+    font-size: clamp(30px, 9vw, 36px) !important;
+    line-height: .98 !important;
+  }
+
+  .topbar p,
+  .panelHead p,
+  .readinessCommandHead p,
+  .studyLogCompletionCta p {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  .topbarActions {
+    gap: 8px !important;
+  }
+
+  .topbarActions > * {
+    min-height: 44px !important;
+  }
+
+  .topbar .count {
+    min-width: 104px !important;
+    padding: 7px 12px !important;
+  }
+
+  .topbar .count strong { font-size: 24px !important; }
+
+  .appShell .nav {
+    gap: 3px !important;
+    margin-bottom: 14px !important;
+    padding: 4px !important;
+    border-radius: 14px !important;
+  }
+
+  .appShell .nav button {
+    min-height: 42px;
+    padding: 7px 10px !important;
+    font-size: 13px !important;
+    gap: 7px !important;
+  }
+
+  .appShell .nav button::before {
+    width: 16px !important;
+    font-size: 16px !important;
+  }
+
+  .appShell .panel,
+  .readinessCommand,
+  .mockPage,
+  .studyLogPanel,
+  .revisionPage {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .panelHead,
+  .mockPage .panelHead,
+  .studyLogPanel .panelHead {
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .panelHead h2,
+  .readinessCommandHead h2,
+  .mockPage .panelHead h2,
+  .studyLogPanel .panelHead h2 {
+    font-size: clamp(24px, 7.5vw, 29px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .readinessCommandHead { gap: 8px !important; margin-bottom: 14px !important; }
+  .paceChip { padding: 7px 10px !important; font-size: 11px !important; }
+  .readinessCommandMain { gap: 14px !important; }
+
+  .readinessDialCard {
+    min-height: 0 !important;
+    padding: 0 0 14px !important;
+  }
+
+  .readinessGauge {
+    width: min(100%, 218px) !important;
+  }
+
+  .readinessGaugeValue {
+    gap: 3px !important;
+    margin-top: 8px !important;
+  }
+
+  .readinessGaugeValue strong { font-size: 30px !important; }
+  .readinessGaugeLegend { width: 100%; margin-top: 16px !important; }
+  .readinessGaugeLegend > span { min-height: 24px !important; font-size: 12px !important; }
+  .readinessGaugeLegend b { font-size: 12px !important; }
+
+  .readinessActions { gap: 8px !important; }
+  .readinessAction {
+    grid-template-columns: 40px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    padding: 11px !important;
+    border-radius: 12px !important;
+  }
+
+  .readinessActionIcon { width: 40px !important; height: 40px !important; font-size: 19px !important; }
+  .readinessAction strong { font-size: 15px !important; }
+  .readinessAction small { font-size: 12px !important; line-height: 1.35 !important; }
+  .readinessActionCta { grid-column: 2; padding: 7px 9px !important; font-size: 11px !important; }
+
+  .revisionTodayPanel .panelHead .primary,
+  .resetStudyButton,
+  .resetMocksButton,
+  .studyLogCompletionCta .primary {
+    width: 100%;
+  }
+
+  .revisionEmpty,
+  .revisionPage .revisionEmpty {
+    min-height: 180px !important;
+    padding: 24px 16px !important;
+  }
+
+  .revisionSummaryCards { gap: 9px !important; margin-top: 12px !important; }
+  .revisionSummaryCards .card {
+    min-height: 92px !important;
+    padding: 13px !important;
+  }
+
+  .revisionSummaryCards .card > span:first-child,
+  .revisionSummaryCards .card .kpiSub { font-size: 11px !important; }
+  .revisionSummaryCards .card .kpiValue { margin: 5px 0 3px !important; font-size: 24px !important; }
+
+  .revisionPage .tabStrip { gap: 4px !important; }
+  .revisionPage .tabStrip button { min-height: 40px !important; padding: 0 10px !important; font-size: 12px !important; }
+
+  .topic,
+  .readingTopicCard { padding: 14px !important; border-radius: 14px !important; }
+
+  .topic .topicTop .topicTitle { font-size: 19px !important; }
+  .topic .topicTop .topicTitle + span { font-size: 10px !important; }
+  .topicReadingCheck { min-height: 56px !important; padding: 10px !important; }
+  .topic .topicReadingsList .topicReadingCheck .topicReadingTitle { font-size: 11px !important; }
+
+  .studyLogCompletionCta { gap: 12px !important; padding: 14px !important; }
+  .studyLogCompletionCta strong { font-size: 17px !important; }
+  .studyLogPanel .logStats { gap: 9px !important; }
+  .studyLogPanel .logStats .card { min-height: 88px !important; padding: 13px !important; }
+
+  .mockPage .mockGrid { gap: 10px !important; }
+  .mockPage .mock {
+    grid-template-rows: auto minmax(44px, 1fr) auto !important;
+    min-height: 164px !important;
+    padding: 14px !important;
+  }
+
+  .mockPage .mockTop { min-height: 38px !important; }
+  .mockPage .mockScore { margin: 8px 0 12px !important; }
+  .mockPage .mockAction { min-height: 42px !important; font-size: 13px !important; }
+
+  .dataTransfer {
+    width: calc(100% - 28px) !important;
+    min-height: 0 !important;
+    margin: 14px auto 24px !important;
+    padding: 16px !important;
+  }
+
+  .modalBackdrop { align-items: start !important; overflow-y: auto; padding: 12px !important; }
+  .modal,
+  .readingLogModal {
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    padding: 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .modal h2,
+  .readingDialogHead h2 { font-size: 24px !important; }
+  .readingDialogFields { gap: 10px !important; margin-top: 14px !important; }
+  .readingDialogFields select,
+  .modal label input { min-height: 44px !important; }
+  .readingStatusOptions button { min-height: 44px !important; }
+}
+
+@media (max-width: 390px) {
+  .topbarActions { flex-wrap: wrap; }
+  .topbarActions .examConfigTrigger { flex: 1 1 100%; }
+  .revisionSummaryCards { grid-template-columns: 1fr 1fr !important; }
+  .dataTransferActions { flex-direction: column !important; }
+  .dataTransferActions .ghost { width: 100%; }
+}

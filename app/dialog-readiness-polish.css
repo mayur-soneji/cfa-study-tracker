@@ -1,26 +1,33 @@
 /* Final layout authority for the two task dialogs and the dashboard gauge. */
 .readinessDialCard {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
+  display: grid !important;
+  grid-template-columns: minmax(0, 290px);
+  grid-template-areas:
+    "gauge"
+    "legend";
+  justify-content: center;
   gap: 0 !important;
   padding: 4px 24px 0 0 !important;
 }
 
 .readinessGauge {
+  grid-area: gauge;
   width: min(100%, 290px) !important;
   aspect-ratio: 5 / 3 !important;
 }
 
 .readinessGaugeValue {
-  position: static !important;
-  inset: auto !important;
-  margin-top: 0 !important;
+  grid-area: gauge;
+  align-self: end;
+  justify-self: stretch;
+  z-index: 1;
+  margin: 0 0 28px !important;
   gap: 2px !important;
 }
 
 .readinessGaugeLegend {
-  margin-top: 14px !important;
+  grid-area: legend;
+  margin-top: 2px !important;
 }
 
 .examConfigModal,
@@ -150,8 +157,12 @@
     padding: 0 8px !important;
   }
 
-  .readinessDialCard { padding: 0 0 12px !important; }
+  .readinessDialCard {
+    grid-template-columns: minmax(0, 238px);
+    padding: 0 0 12px !important;
+  }
   .readinessGauge { width: min(100%, 238px) !important; }
-  .readinessGaugeLegend { margin-top: 10px !important; }
+  .readinessGaugeValue { margin-bottom: 21px !important; }
+  .readinessGaugeLegend { margin-top: 2px !important; }
 }
 

@@ -118,6 +118,26 @@
 }
 
 @media (max-width: 700px) {
+  .revisionPage .revisionControls {
+    padding: 6px !important;
+  }
+
+  .revisionPage .tabStrip {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    gap: 6px !important;
+    overflow: visible !important;
+  }
+
+  .revisionPage .tabStrip button {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 8px !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+  }
+
   .modalBackdrop {
     align-items: center !important;
     overflow: hidden !important;
@@ -165,4 +185,3 @@
   .readinessGaugeValue { margin-bottom: 21px !important; }
   .readinessGaugeLegend { margin-top: 2px !important; }
 }
-
